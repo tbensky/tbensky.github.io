@@ -1,35 +1,45 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title>Latitude/Longitude Calculator</title>
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAJ8OVIaqTsj0ocGKDqB3tfBRoJiWIwUgEZUVg7J4prq6WBIdSgRSnMLHGPt6G07BO1_ANSTU-KIe85g";
-type="text/javascript"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script type="text/javascript">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARFyrT9del1UPyflzCvtezL1vp--zopv4&callback=init_map&libraries=geometry" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
 
 
-//<![CDATA[
-
-function load() 
-{
-		if (GBrowserIsCompatible()) 
+<body>
+    <center>
+    <input type=text id=coords size=40 style="font-size: 16pt;">
+	<div id="map" style="width:800px; height:800px;"></div>
+	</center>
+	<script>
+		function init_map()
 		{
-				var map = new GMap2(document.getElementById("map"));
-				var point = new GPoint(35.299159,-120.66247433);
-				map.setCenter(new GLatLng(35.299159,-120.66247433), 18);
-
-				//var point = new GPoint(51.495,-0.1847);
-				//map.setCenter(new GLatLng(51.495,-0.1847),15);
-
-				map.addControl(new GLargeMapControl());
-				map.addControl(new GMapTypeControl());
-				map.setMapType(G_HYBRID_MAP);
-				GEvent.addListener(map, "click", mclick);
-				map.addOverlay(new GMarker(point, G_DEFAULT_ICON));
+		  map = new google.maps.Map(document.getElementById('map'), 
+		  {
+			center: {lat: 35.3, lng: -120.66},
+			zoom: 20,
+			mapTypeId: 'hybrid'
+		  }); 
+		  
+		  map.addListener('click', 
+		                function(e) 
+		                { 
+		                    $('#coords').val('Latitude='+precisionRound(e.latLng.lat(),2)+', '+'Longitude='+precisionRound(e.latLng.lng(),2));
+		                }
+		            );
+		  
 		}
+
+
+function precisionRound(number, precision) {
+  var factor = Math.pow(10, precision);
+  return Math.round(number * factor) / factor;
 }
+
 
 function mclick(marker,point)
 {
@@ -37,15 +47,6 @@ function mclick(marker,point)
 	//alert(point);
 }
 
-//]]>
 </script>
-
-<center>
-<input type=text id=coords size=100>
-<div id="map" style="width: 800px; height: 600px"></div>
-</center>
-
-</head>
-<body onload="load()" onunload="GUnload()">
 </body>
 </html>
