@@ -30,7 +30,7 @@
 		  map.addListener('click', 
 		                function(e) 
 		                { 
-		                    $('#coords').val('Latitude='+precisionRound(e.latLng.lat(),4)+', '+'Longitude='+precisionRound(e.latLng.lng(),4));
+		                    $('#coords').val('Latitude='+e.latLng.lat()+', '+'Longitude='+e.latLng.lng());
 		                }
 		            );
 		  
