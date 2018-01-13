@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<title>Latitude,Longitude Point Plotter</title>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARFyrT9del1UPyflzCvtezL1vp--zopv4&callback=init_map&libraries=geometry" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+    <p/>
+    <center>
+    See the text box and controls <i>under the map</i> for your data areas.
+    <p/>
+	<div id="map" style="width:800px; height:800px;"></div>
+	<p/>
+	<p/>
+    Type (or paste) <b>latitude,longitude</b> point into this box, <b>one pair per line</b> as shown:<br/>
+    (Erase the example points before putting in your points.)
+    <p/>
+    <textarea id="points" rows=20 cols=50>
+35.30152316194978, -120.66041171550751
+35.30076780074545, -120.6589686870575
+35.30057586357823, -120.65806210041046
+35.29959759610424, -120.65856635570526
+35.298687425239514, -120.65777242183685
+35.299257057183326, -120.65654397010803
+35.300031007203714, -120.65715551376343
+35.30035915977777, -120.6579977273941
+35.29963474571801, -120.65861463546753
+
+    </textarea>
+    <br/>
+    <button onclick="plot()">Plot my points</button>
+    <button onclick="init_map()">Clear points</button>
+     </center>
+    
+	
+	<script>
+	var map;
+		function init_map()
+		{
+		  map = new google.maps.Map(document.getElementById('map'), 
+		  {
+			center: {lat: 35.3, lng: -120.66},
+			zoom: 17,
+			mapTypeId: 'hybrid'
+		  }); 
+		  
+		  map.addListener('click', 
+		                function(e) 
+		                { 
+		                    $('#coords').val('Latitude='+e.latLng.lat()+', '+'Longitude='+e.latLng.lng());
+		                }
+		            );
+		  
+		}
+
+
+function precisionRound(number, precision) {
+  var factor = Math.pow(10, precision);
+  return Math.round(number * factor) / factor;
+}
+
+
+function mclick(marker,point)
+{
+	$('#coords').val(point);
+	//alert(point);
+}
+
+function plot()
+{
+    var points = $('#points').val();
+    var lines = points.split("\n");
+    var i;
+    var pt, pair;
+    var walkpath = [];
+    
+    for(i=0;i<lines.length;i++)
+    { 
+        if (lines[i].indexOf(",") != -1)
+        {
+            pair = lines[i].split(",");
+            pt = new google.maps.LatLng(pair[0],pair[1]);
+            var marker = new google.maps.Marker({
+              position: pt,
+              map: map,
+              label: (i+1).toString()
+            });
+            walkpath.push({lat: parseFloat(pair[0]),lng: parseFloat(pair[1])});
+        }
+    }
+    
+    var flightPath = new google.maps.Polyline({
+          path: walkpath,
+          geodesic: true,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 5
+        });
+
+        flightPath.setMap(map);
+        map.setCenter(walkpath[0]);
+        
+            
+    
+}
+
+</script>
+</body>
+</html>
