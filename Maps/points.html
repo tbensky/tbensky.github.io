@@ -80,12 +80,30 @@ function plot()
     var i;
     var pt, pair;
     var walkpath = [];
+    var term_pos;
+    var term = ",";
     
     for(i=0;i<lines.length;i++)
     { 
-        if (lines[i].indexOf(",") != -1)
+        term_pos = lines[i].indexOf(",");
+        if (term_pos != -1)
+            term = ",";
+        else
+            {
+                term_pos = lines[i].indexOf(" ");
+                if (term_pos != -1)
+                    term = " ";
+                else
+                {
+                    term_pos = lines[i].indexOf("\t");
+                    if (term_pos != -1)
+                        term = "\t";
+                }
+            }
+                
+        if (lines[i].indexOf(term) != -1)
         {
-            pair = lines[i].split(",");
+            pair = lines[i].split(term);
             pt = new google.maps.LatLng(pair[0],pair[1]);
             var marker = new google.maps.Marker({
               position: pt,
