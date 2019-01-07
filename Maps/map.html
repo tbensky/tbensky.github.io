@@ -5,7 +5,8 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title>Latitude/Longitude Finder</title>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARFyrT9del1UPyflzCvtezL1vp--zopv4&callback=init_map&libraries=geometry" async defer></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
 
@@ -19,26 +20,48 @@
 	<div id="map" style="width:800px; height:800px;"></div>
 	
 	<p/>
-	Click on the map to display the (lat,long) coordinates of your click.
+	Click on the map to display the (lat,long) coordinates of your click. <span id=goog_sat></span>.
 	</center>
 	<script>
-		function init_map()
-		{
-		  map = new google.maps.Map(document.getElementById('map'), 
-		  {
-			center: {lat: 35.3, lng: -120.66},
-			zoom: 20,
-			mapTypeId: 'hybrid'
-		  }); 
-		  
-		  map.addListener('click', 
-		                function(e) 
-		                { 
-		                    $('#coords').val(e.latLng.lat()+', '+e.latLng.lng());
-		                }
-		            );
-		  
-		}
+		var lat = 35.30207983012057;
+		var lng = -120.65967947244647;
+		var zoom = 20;
+		var center_marker;
+		var center_point = [lat,lng];
+		var mymap = L.map('map').setView(center_point, 2);
+
+		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+   						 }).addTo(mymap);
+    
+    mymap.on('click', function(e) 
+    {
+        lat = e.latlng.lat;
+        lng = e.latlng.lng;
+        
+        if (center_marker != undefined) {
+              mymap.removeLayer(center_marker);
+        }
+        center_marker = L.marker(e.latlng).addTo(mymap);
+        mymap.setView(new L.LatLng(lat, lng),mymap.getZoom());   
+        $('#coords').val(lat+', '+lng);         
+        //https://www.google.com/maps/@14.4835865,-61.9275161,2000m/data=!3m1!1e3
+        //http://maps.google.com/maps?t=k&q=loc:47.5951518+-122.3316393
+        $('#goog_sat').html('See <a target=_blank href=https://www.google.com/maps?t=k&q=loc:' + lat+'+'+lng+'>satellite image</a>');
+    });
+
+
+
+
+		 $(document).ready(
+    
+                        function() 
+                        {
+                                center_marker = L.marker(L.latLng(lat,lng)).addTo(mymap);
+                                mymap.setZoom(zoom);
+                       
+                            });
+
 
 
 function precisionRound(number, precision) {
