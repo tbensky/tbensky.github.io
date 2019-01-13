@@ -5,7 +5,8 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 <title>Latitude,Longitude Point Plotter</title>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARFyrT9del1UPyflzCvtezL1vp--zopv4&callback=init_map&libraries=geometry" async defer></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
 
@@ -30,35 +31,34 @@
 35.299257057183326, -120.65654397010803
 35.300031007203714, -120.65715551376343
 35.30035915977777, -120.6579977273941
-35.29963474571801, -120.65861463546753
-
+35.29963474571801, -120.6586146354675
     </textarea>
     <br/>
     <button onclick="plot()">Plot my points</button>
-    <button onclick="init_map()">Clear points</button>
+    <button onclick="init_map()">Erase points</button>
      </center>
+
+
+     <script>
+        var lat = 35.30207983012057;
+        var lng = -120.65967947244647;
+        var zoom = 20;
+        var center_marker;
+        var center_point = [lat,lng];
+        var mymap = L.map('map').setView(center_point, 2);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                         }).addTo(mymap);
+
+
+         $(document).ready(
     
-	
-	<script>
-	var map;
-		function init_map()
-		{
-		  map = new google.maps.Map(document.getElementById('map'), 
-		  {
-			center: {lat: 35.3, lng: -120.66},
-			zoom: 17,
-			mapTypeId: 'hybrid',
-			scaleControl: true
-		  }); 
-		  
-		  map.addListener('click', 
-		                function(e) 
-		                { 
-		                    $('#coords').val('Latitude='+e.latLng.lat()+', '+'Longitude='+e.latLng.lng());
-		                }
-		            );
-		  
-		}
+                        function() 
+                        {
+                                mymap.setZoom(zoom);
+                       
+                            });
 
 
 function precisionRound(number, precision) {
@@ -85,49 +85,52 @@ function plot()
     
     for(i=0;i<lines.length;i++)
     { 
-        term_pos = lines[i].indexOf(",");
-        if (term_pos != -1)
-            term = ",";
-        else
-            {
-                term_pos = lines[i].indexOf(" ");
-                if (term_pos != -1)
-                    term = " ";
-                else
-                {
-                    term_pos = lines[i].indexOf("\t");
-                    if (term_pos != -1)
-                        term = "\t";
-                }
-            }
-                
-        if (lines[i].indexOf(term) != -1)
+        if (lines[i].length > 10)
         {
-            pair = lines[i].split(term);
-            pt = new google.maps.LatLng(pair[0],pair[1]);
-            var marker = new google.maps.Marker({
-              position: pt,
-              map: map,
-              label: (i+1).toString()
-            });
-            walkpath.push({lat: parseFloat(pair[0]),lng: parseFloat(pair[1])});
+            term_pos = lines[i].indexOf(",");
+            if (term_pos != -1)
+                term = ",";
+            else
+                {
+                    term_pos = lines[i].indexOf(" ");
+                    if (term_pos != -1)
+                        term = " ";
+                    else
+                    {
+                        term_pos = lines[i].indexOf("\t");
+                        if (term_pos != -1)
+                            term = "\t";
+                    }
+                }
+                    
+            if (lines[i].indexOf(term) != -1)
+            {
+                pair = lines[i].split(term);
+                m = new L.marker(L.latLng(pair[0],pair[1])).addTo(mymap);
+                m.bindPopup('Location '+(i+1).toString()).openPopup();
+                walkpath.push(new L.LatLng(parseFloat(pair[0]),parseFloat(pair[1])));
+            }
         }
     }
-    
-    var flightPath = new google.maps.Polyline({
-          path: walkpath,
-          geodesic: true,
-          strokeColor: '#FF0000',
-          strokeOpacity: 1.0,
-          strokeWeight: 5
-        });
 
-        flightPath.setMap(map);
-        map.setCenter(walkpath[0]);
-        
-            
+
+    var options = {
+               color: 'blue',
+               weight: 5,
+               opacity: .5
+             };
     
+    var flightPath = new L.polyline(walkpath,options);
+    mymap.addLayer(flightPath);
+    mymap.fitBounds(flightPath.getBounds());
+        L.map('map').setView(walkpath[0], 2); 
 }
+
+function init_map()
+{
+    $('#points').val('');
+}
+
 
 </script>
 </body>
