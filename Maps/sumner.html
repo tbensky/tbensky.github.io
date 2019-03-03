@@ -9,17 +9,15 @@
 <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
  
-<script type="text/javascript" src="https://github.com/tbensky/tbensky.github.io/tree/master/Maps/graticule01/Leaflet.Graticule.js"></script>
+<script type="text/javascript" src="graticule01/Leaflet.Graticule.js"></script>
 </head>
 
 
 <body>
-    <p/>
     <center>
-    See the text box and controls <i>under the map</i> for your data areas.
-    <p/>
 	<div id="map" style="width:1024; height:1024px;"></div>
-     <button onclick="plot()">Plot my points</button>
+    
+    <button onclick="plot()">Plot points</button>
     <button onclick="init_map()">Erase points</button>
     <button onclick="add_point(51.72,-5.66,'Lighthouse');">Small's Lighthouse</button>
     <button onclick="add_point(-23.33,29.95,'GP');">Sun's GP</button>
@@ -27,6 +25,8 @@
     <button onclick="add_point(51.45, -6.74,'Calc #1');">Calculated #1 (lng from DR lat)</button>
     <button onclick="add_point(51.61,-6.07,'Calc #2');">Calculated #2 (10' north)</button>
     <button onclick="add_point(51.78,-5.42,'Calc #3');">Calculated #2 (20' north)</button>
+    <button onclick="cop();">COP</button>
+    <p/>
    
     <textarea id="points" rows=20 cols=50>
     </textarea>
@@ -64,6 +64,7 @@
                         {
                                 mymap.setZoom(zoom);
                                 var scale = L.control.scale().addTo(mymap); 
+
                         
                                 
                        
@@ -147,6 +148,11 @@ function add_point(lat,lng,label)
 {
     $('#points').append(lat+','+lng+','+label+'\n');
 
+}
+
+function cop()
+{
+        c = new L.circle([-23.33, 29.95], {radius: 8900000, fillOpacity: 0.0}).addTo(mymap);
 }
 
 

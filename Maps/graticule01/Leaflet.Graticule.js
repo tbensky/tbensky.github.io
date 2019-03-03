@@ -188,45 +188,44 @@ L.LatLngGraticule = L.Layer.extend({
     },
 
     __format_lat: function(lat) {
-        lat = lat.toFixed(2);
+
         if (this.options.latFormatTickLabel) {
-            return this.options.latFormatTickLabel(lat);
+            return this.options.latFormatTickLabel(lat.toFixed(1));
         }
 
         // todo: format type of float
         if (lat < 0) {
-            return '' + (lat*-1) + 'S';
+            return '' + (lat*-1).toFixed(1) + 'S';
         }
         else if (lat > 0) {
-            return '' + lat + 'N';
+            return '' + lat.toFixed(1) + 'N';
         }
-        return '' + lat;
+        return '' + lat.toFixed(1);
     },
 
     __format_lng: function(lng) {
-        lng = lng.toFixed(2);
         if (this.options.lngFormatTickLabel) {
-            return this.options.lngFormatTickLabel(lng);
+            return this.options.lngFormatTickLabel(lng.toFixed(1));
         }
 
 
         // todo: format type of float
         if (lng > 180) {
-            return '' + (360 - lng) + 'W';
+            return '' + (360 - lng).toFixed(1) + 'W';
         }
         else if (lng > 0 && lng < 180) {
-            return '' + lng + 'E';
+            return '' + lng.toFixed(1) + 'E';
         }
         else if (lng < 0 && lng > -180) {
-            return '' + (lng*-1) + 'W';
+            return '' + (lng*-1).toFixed(1) + 'W';
         }
         else if (lng == -180) {
-            return '' + (lng*-1);
+            return '' + (lng*-1).toFixed(1);
         }
         else if (lng < -180) {
-            return '' + (360 + lng) + 'W';
+            return '' + (360 + lng).toFixed(1) + 'W';
         }
-        return '' + lng;
+        return '' + lng.toFixed(1);
     },
 
     __calcInterval: function() {
