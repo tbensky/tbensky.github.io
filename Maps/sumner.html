@@ -43,7 +43,7 @@
         var center_point = [lat,lng];
         var mymap = L.map('map').setView(center_point, 2);
 
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                          }).addTo(mymap);
 
@@ -146,7 +146,9 @@ function init_map()
 
 function add_point(lat,lng,label)
 {
-    $('#points').append(lat+','+lng+','+label+'\n');
+    var val = $('#points').val();
+    val = val + lat+','+lng+','+label+'\n';
+    $('#points').val(val);
 
 }
 
