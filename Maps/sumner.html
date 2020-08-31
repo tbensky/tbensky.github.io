@@ -108,6 +108,7 @@ function plot()
     var walkpath = [];
     var term_pos;
     var term = ",";
+    var url;
     
     for(i=0;i<lines.length;i++)
     { 
@@ -133,7 +134,21 @@ function plot()
             if (lines[i].indexOf(term) != -1)
             {
                 pair = lines[i].split(term);
-                m = new L.marker(L.latLng(pair[0],pair[1]),{color: 'yellow'}).addTo(mymap);
+                switch(pair[2])
+                {
+                	case 'Lighthouse': url = 'lighthouse.png'; break;
+                	case 'DR': url = 'ship.png'; break;
+                	default: url = ''; break;
+                }
+
+                if (url)
+                {
+                	 var myIcon = L.icon({ iconUrl: url, iconSize: [50,50]});
+                	 m = new L.marker(L.latLng(pair[0],pair[1]),{icon: myIcon}).addTo(mymap);
+                }
+                else m = new L.marker(L.latLng(pair[0],pair[1])).addTo(mymap);
+                
+                
                 if (pair[2])
                     m.bindPopup(pair[2]).openPopup();
                 walkpath.push(new L.LatLng(parseFloat(pair[0]),parseFloat(pair[1])));
