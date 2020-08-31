@@ -10,29 +10,45 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
  
 <script type="text/javascript" src="graticule01/Leaflet.Graticule.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 
 
 <body>
+	<div class="container">
+		<div class="row">
+			
     <center>
+    	<h3>Live map of Sumner's Journey</h3>
+			<p/>
 	<div id="map" style="width:800px; height:800px;"></div>
-    
-    <button onclick="plot()">Plot points</button>
-    <button onclick="init_map()">Erase points</button>
-    <button onclick="add_point(51.72,-5.66,'Lighthouse');">Small's Lighthouse</button>
-    <button onclick="add_point(-(23.25-1.51669),360-(333.2+3.84364),'GP');">Sun's GP</button>
-    <button onclick="add_point(51.62,-6-0.488935,'DR');">DR Position</button>
-    <button onclick="add_point(51.62,-6.05076,'Calc #1');">Calculated #1 (lng from DR lat)</button>
-    <button onclick="add_point(51.7867,-5.42825,'Calc #2');">Calculated #2 (10' north)</button>
-    <button onclick="add_point(51.9533,-4.78535,'Calc #3');">Calculated #2 (20' north)</button>
-    <button onclick="cop();">COP</button>
-    <p/>
+     <br/>
+      <button class="btn btn-xs btn-warning" onclick="add_point(51.72,-5.66,'Lighthouse');">Small's Lighthouse</button>
+    <button class="btn btn-xs btn-warning" onclick="add_point(-(23.25-1.51669),360-(333.2+3.84364),'GP');">Sun's GP</button>
+    <button class="btn btn-xs btn-warning" onclick="add_point(51.62,-6-0.488935,'DR');">DR Position</button>
+    <button class="btn btn-xs btn-warning" onclick="add_point(51.62,-6.05076,'Calc #1');">Calculated #1 (lng from DR lat)</button>
+    <button class="btn btn-xs btn-warning" onclick="add_point(51.7867,-5.42825,'Calc #2');">Calculated #2 (10' north)</button>
+    <button class="btn btn-xs btn-warning" class="btn btn-success" onclick="add_point(51.9533,-4.78535,'Calc #3');">Calculated #2 (20' north)</button>
+    <button class="btn btn-xs btn-info" onclick="cop();">COP</button>
+    <br/><br/>
+    <button class="btn btn-xs btn-success" onclick="plot()">Plot points</button>
+    <button class="btn btn-xs btn-primary" onclick="init_map()">Erase points</button>
+ 
+    <br/><br/>
    
-    <textarea id="points" rows=20 cols=50>
-    </textarea>
+    <textarea id="points" rows=10 cols=50></textarea>
     <br/>
    
      </center>
+ </div>
+</div>
 
 
      <script>
@@ -117,7 +133,7 @@ function plot()
             if (lines[i].indexOf(term) != -1)
             {
                 pair = lines[i].split(term);
-                m = new L.marker(L.latLng(pair[0],pair[1])).addTo(mymap);
+                m = new L.marker(L.latLng(pair[0],pair[1]),{color: 'yellow'}).addTo(mymap);
                 if (pair[2])
                     m.bindPopup(pair[2]).openPopup();
                 walkpath.push(new L.LatLng(parseFloat(pair[0]),parseFloat(pair[1])));
