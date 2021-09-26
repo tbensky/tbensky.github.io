@@ -75,22 +75,10 @@
   <div style="padding-top: 60px" id="teaching">
     <h2 class="w3-wide">Teaching</h2>
     <p>
-    I like tinkering with teaching and am always looking for new ways of injecting modern ideas and technology into what I do.  Here is some of my work.
-    </p>
-
-    <h3>Virtual Advanced Labs</h3>
+    I like tinkering with teaching and am always looking for new ways of injecting modern ideas and technology into what I do.  Here are some recent efforts: 
     I needed to have three terms worth of upper division labs made virtual for teaching during the Spring 2020, Fall 2020, and Winter 2021
-    Covid lockdown. <a href=https://github.com/tbensky/PhysicsLabs>Here they are.</a>
-
-    <h3>Contract Tracing Token</h3>
-    I developed this as a technology-based contact tracer. No one ever used it, but I learned a lot about
-    Bluetooth and the ESP32 microcontroller.  <a href=https://github.com/tbensky/npct>No phone/no app contact tracing token</a>.
-    
-    <h3>Class attendance</h3>
-    
-    I coded up an attendance system called <a href=http://youhere.org target=_blank>Youhere.org</a> that
-    allows teachers to take attendance by having students "check-in" to class using their 
-    location-aware phones.  Check it out!
+    Covid lockdown. <a href=https://github.com/tbensky/PhysicsLabs>Here they are.</a>. During the lockdown/pandemic I developed this as a technology-based contact tracing token. No one ever used it, but I learned a lot about
+    Bluetooth and the ESP32 microcontroller.  <a href=https://github.com/tbensky/npct>No phone/no app contact tracing token</a>.  I coded up an attendance system called <a href=http://youhere.org target=_blank>Youhere.org</a> that allows teachers to take attendance by having students "check-in" to class using their location-aware phones.  
     
     <h3>Arduino</h3>
     
@@ -326,7 +314,43 @@ is the code for it, if you want to investigate it further.
   <div style="padding-top: 60px" id="research">
     <h2 class="w3-wide">Research</h2>
     <p class="w3-justify">
-    Research stuff
+    In recent years (with funding help from Cal Poly's RSCA grant, the Frost fund, and the Physics Dept) (and actually a non-trivial amount of my own money!), we've (me and a few students over the years), have been working on developing a Rubidium-vapor atomic clock. It was a tough thing to build (no papers on a clock of this scale), and even tougher to find what is called the Rb87 0-0 clock reference. Here's the clock itself (in my garage during the 2020/2021 lockdown/pandemic):
+
+    <br/><br/>
+
+    <center><img src=AtomicClockPics/atomic.jpg></center>
+
+    <br/><br/>
+
+    The lock-in amplifier is in the upper left and the microwave source at the upper right. Here's a close-up picture:
+
+
+
+    <br/><br/>
+
+    <center><img src=AtomicClockPics/closeup.jpg></center>
+
+     <br/><br/>
+
+    That's the (borrowed!) Rb-lamp in the back (pinkish glow), then a focusing lens, then the Rb85 cell, and then the Rb87 cell buried in the field controlling/canceling Helmholtz Coils. Note the microwave horn on top
+    of the Rb87 cell as well.  The gray cases are 3D printed to contain the actual Rb vapor cells in their temperature controlled environment of about 35C. 
+
+    <br/><br/>
+
+    After many, many arduious hours (weeks, months, ...) of searching, scanning, searching, and scanning, we finally got everything right and found the 0-0 resonance as shown here.
+
+    <br/><br/>
+
+    <center><img src=AtomicClockPics/res.png></center>
+
+    <br/><br/>
+
+    It shows up at about 6,832,684,610 Hz + 8,100 Hz, shifted primarily by the pressure of the N2 buffer gas. If you're still here, we have <a href=AtomicClockPics/rbnotes.pdf>some notes</a> compiled that we sent to a few groups asking for help. Work continues...
+
+
+
+
+
     </p>
   </div>
 
@@ -342,6 +366,7 @@ is the code for it, if you want to investigate it further.
     <h2 class="w3-wide">Publications</h2>
         
     <ul>
+    <li> Aug 2021: <a href=https://arxiv.org/abs/2108.09893>Teaching and learning mathematics with Prolog</a>
     <li> July 2021: <a href=https://iopscience.iop.org/article/10.1088/1361-6552/ac12a8>The Zener diode: generating gamma-ray statistics without the gamma rays</a>
     <li> August 2020: <a href=https://arxiv.org/abs/2008.02851>A no-phone/no-app contact tracing hardware token</a>
     <li> July 2019: A paper about assembling <a target=_blank href=https://www.dropbox.com/s/5ytbh97emlo9yfi/BHJ_June2019.pdf?dl=1 target=_blank>student-capable wooden escapement</a>. 
