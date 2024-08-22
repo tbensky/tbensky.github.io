@@ -24,7 +24,7 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
       <li>  <a href="#teaching">Teaching</a></li>
-       <li> <a href="#research">Atomic clock research</a></li>
+       <li> <a href="#research">Research</a></li>
        <li> <a href="#longitude">Longitude</a></li>
         <li><a href="#graphics">Graphics</a></li>
        <li> <a href="#publications">Publications</a></li>
@@ -310,7 +310,33 @@ is the code for it, if you want to investigate it further.
   </div>
   
   <div style="padding-top: 60px" id="research">
-    <h2 class="w3-wide">Atomic Clock Research</h2>
+    <h2>Research</h2>
+    I have two research interests
+      1. Atomic clocks and
+      2. AI, in particular probing how neural networks work and using them in physics applications.
+    
+    <h3>AI/Neural Networks</h3>
+
+    I have two projects going on, one involving "Physics informed neural networks" (PiNNs)s and the other involing Convolutional Neural Networks. Here are 
+    my latest results
+
+      1. Basic neural networks
+        * Train on vectors and examine limits of interpolation
+        * Create animations showing weight changes during training
+        * Examine hidden layer neuron firings
+        * Examine network depth and width vs training viability
+
+      1. [PiNNS](https://github.com/tbensky/PiNN_Projectile). Possible projects:
+        * For the projectile with drag, making other parameters (such as g and C) as trainable parameters
+        * Train other systems like $1/r^2$ orbits and oscillating systems
+
+      1. [CNNs](https://github.com/tbensky/CNNKernels). Possible projects:
+        * Continue to investigate kernel structure of trained networks
+        * Find new data sets to train on, with kernel inspections
+        * Investigate number of kernels allowed vs. training accuracy vs. kernel structure
+        * Run and visualize convolutions from actual kernels and data items
+    
+    <h3 class="w3-wide">Atomic Clocks</h3>
     <p class="w3-justify">
     In recent years (with funding help from Cal Poly's RSCA grant, the Frost fund, and the Physics Dept) (and actually a non-trivial amount of my own money!), we've (me and a few students over the years), have been working on developing a Rubidium-vapor atomic clock. It was a tough thing to build (no papers on a clock of this scale), and even tougher to find what is called the Rb87 0-0 clock reference. Here's the clock itself (in my garage during the 2020/2021 lockdown/pandemic):
 
