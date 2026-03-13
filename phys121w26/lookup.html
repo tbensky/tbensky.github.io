@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Student Lookup</title>
+  <style>
+    body{font-family:Arial, sans-serif; max-width:520px; margin:80px auto; padding:0 16px; text-align:center;}
+    input,button{font-size:16px; padding:10px 12px;}
+    input{width:220px;}
+    button{cursor:pointer; margin-left:6px;}
+    #result{margin-top:18px; font-size:18px; font-weight:700;}
+    .hint{margin-top:10px; color:#666; font-size:13px;}
+  </style>
+</head>
+<body>
+  <h2>Enter Your Student ID</h2>
+  <div>
+    <input id="sid" inputmode="numeric" autocomplete="off" placeholder="e.g. 0167 or 167" />
+    <button id="btn">Submit</button>
+  </div>
+  <div id="result"></div>
+  <div class="hint">Tip: you can type with or without leading zeros.</div>
+
+<script>
+(()=>{ // everything hidden in a closure
+
+  // Base64 of your original two-column data (tab-separated)
+  const E="MDE2NwkxMQowMTgwCTUsOAowMzgyCTUKMDQ5MgkzLDQsNQowNTUzCTIsMyw0LDUsOCwxMSwxMgowODI1CTExCjE0MTgJMSwzLDQsNSwxMAoxNjQyCTIsNCw1CjE2OTQJMyw1LDgsMTAsMTEsMTIKMTg1MQkKMTg2OAkxLDMsNCw1LDksMTEKMjI4OQkyLDMsNCw1LDExLDEyCjI1MjYJMyw4CjI2MzYJCjI5MDEJMyw0LDUsNiwxMQozNTU5CTQsNQozNzQ1CQozOTA4CQo0MDg2CTMsNSw4LDExLDEyCjQ5OTYJMyw1LDgKNTAzMwkyLDMsNQo1MzI0CTEsMiwzLDQsNSw2LDcsOAo1NDc0CTIsNCw1LDksMTEKNTgyOQkyLDMsNCw4CjYxMjAJMSw0LDUsNiw3CjYxNTQJMyw0LDYsNywxMQo2NDE2CTIsMyw0LDUsOCw5LDEwLDExLDEyCjY3NDgJMyw0CjY5MTYJMSw0LDcsOCw5LDEyCjcyNTEJMyw1LDgsMTAsMTIKNzQyMwkxMQo3NDY5CQo3NTY0CTMsNCw1LDYKNzU5MgkxLDIsMyw0LDUsNiw3LDgsOSwxMCwxMSwxMgo3NTk4CTkKNzcxMwkxLDIsMyw4Cjc3ODMJNCw4Cjc4MDcJNSw5LDEwCjgzODEJMSwyLDMsNCw1LDksMTEKODM5Mgk1LDkKODQ4NQkKODk3NAk0LDgKOTM2NAkyCjk1ODkJMyw0LDgKOTgwNAkyLDMsNSw3LDExCjk5NjcJMSw0LDcsOAo=";
+
+  const M=Object.create(null);
+  const S=atob(E).split(/\r?\n/);
+
+  for(const L of S){
+    if(!L) continue;
+    const p=L.split("\t");
+    const k=(p[0]||"").trim();
+    if(!k) continue;
+    const v=((p[1]||"").trim());
+    M[k]=v; // v may be empty string if col2 is blank
+  }
+
+  const $=id=>document.getElementById(id);
+  const out=$("result");
+  const inp=$("sid");
+
+  function norm(x){
+    x=(x||"").trim();
+    if(!x) return "";
+    if(/^\d+$/.test(x) && x.length<4) x=x.padStart(4,"0");
+    return x;
+  }
+
+  function go(){
+    const id=norm(inp.value);
+    if(!id){ out.textContent="Please enter the last 4 digits of your Cal Poly ID."; return; }
+    if(Object.prototype.hasOwnProperty.call(M,id)){
+      const v=M[id];
+      out.textContent = v ? ("Your result: "+v) : "No entry for this ID--this means you'll be doing all problems on the final.";
+    } else {
+      out.textContent="ID not found.";
+    }
+  }
+
+  $("btn").addEventListener("click", go);
+  inp.addEventListener("keydown", e=>{ if(e.key==="Enter") go(); });
+
+})();
+</script>
+</body>
+</html>
