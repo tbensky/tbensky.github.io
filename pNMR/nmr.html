@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { margin: 0; background: #050505; color: #00ff88; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
+        canvas { border: 1px solid #222; background: #000; border-radius: 12px; }
+        .controls { position: absolute; bottom: 20px; background: rgba(15,15,15,0.95); padding: 20px 30px; border-radius: 60px; border: 1px solid #444; display: flex; align-items: center; gap: 20px; backdrop-filter: blur(10px); }
+        .btn { background: #00ff88; color: #000; border: none; padding: 10px 18px; border-radius: 30px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: 0.2s; font-size: 10px; width: 110px; }
+        .btn:hover { background: #fff; box-shadow: 0 0 15px #00ff88; }
+        .btn-180 { background: #ff4444; color: white; }
+        .label { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: #888; }
+        .signal-meter { position: absolute; top: 40px; right: 40px; width: 150px; text-align: center; }
+        #sigBar { width: 100%; height: 10px; background: #222; border-radius: 5px; overflow: hidden; margin-top: 5px; }
+        #sigFill { width: 0%; height: 100%; background: #00ff88; transition: width 0.1s; }
+    </style>
+</head>
+<body>
+
+    <div style="margin-bottom: 10px; text-align: center;">
+        <div class="label" style="color:#00ff88; font-size: 14px;">Coherent Spin Ensemble</div>
+        <div class="label">Synchronized phase for maximum signal induction</div>
+    </div>
+
+    <div class="signal-meter">
+        <div class="label">Transverse Signal (M<sub>xy</sub>)</div>
+        <div id="sigBar"><div id="sigFill"></div></div>
+    </div>
+    
+    <canvas id="spinCanvas"></canvas>
+
+    <div class="controls">
+        <div style="display: flex; flex-direction: column;">
+            <span class="label">B-Field (Alignment)</span>
+            <input type="range" id="fieldSlider" min="0" max="100" value="70">
+        </div>
+        <div style="display: flex; flex-direction: column;">
+            <span class="label">T1 Recovery</span>
+            <input type="range" id="t1Slider" min="1" max="100" value="50">
+        </div>
+        <button class="btn" id="pulse90">90 deg Pulse</button>
+        <button class="btn btn-180" id="pulse180">180 deg Pulse</button>
+    </div>
+
+<script>
+    const canvas = document.getElementById('spinCanvas');
+    const ctx = canvas.getContext('2d');
+    const sigFill = document.getElementById('sigFill');
+    
+    canvas.width = 900; canvas.height = 650;
+
+    const numArrows = 300;
+    const arrows = [];
+    const arrowLength = 18;
+    const baseOmega = 0.08; 
+    let globalPhase = 0; // Synchronized phase for all spins
+
+    let remainingRotation = 0;
+    const pulseStep = Math.PI / 120; 
+
+    for (let i = 0; i < numArrows; i++) {
+        arrows.push({
+            xPos: Math.random() * canvas.width, 
+            yPos: Math.random() * canvas.height,
+            x: 0, y: -1, z: 0
+        });
+    }
+
+    document.getElementById('pulse90').addEventListener('click', () => { 
+        if (remainingRotation <= 0) remainingRotation = Math.PI / 2; 
+    });
+    document.getElementById('pulse180').addEventListener('click', () => { 
+        if (remainingRotation <= 0) remainingRotation = Math.PI; 
+    });
+
+    function drawArrow(x, y, dx, dy, color, width, headSize) {
+        const tipX = x + dx; const tipY = y + dy;
+        ctx.strokeStyle = color; ctx.lineWidth = width;
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(tipX, tipY); ctx.stroke();
+        const angle = Math.atan2(tipY - y, tipX - x);
+        ctx.beginPath();
+        ctx.moveTo(tipX, tipY);
+        ctx.lineTo(tipX - headSize * Math.cos(angle - 0.5), tipY - headSize * Math.sin(angle - 0.5));
+        ctx.moveTo(tipX, tipY);
+        ctx.lineTo(tipX - headSize * Math.cos(angle + 0.5), tipY - headSize * Math.sin(angle + 0.5));
+        ctx.stroke();
+    }
+
+    function animate() {
+        ctx.fillStyle = 'rgba(5, 5, 5, 0.45)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        const B = parseFloat(document.getElementById('fieldSlider').value) / 100;
+        const T1 = (101 - parseFloat(document.getElementById('t1Slider').value)) / 2500; 
+
+        let stepAngle = 0;
+        let pulseActive = remainingRotation > 0;
+        if (pulseActive) {
+            stepAngle = Math.min(remainingRotation, pulseStep);
+            remainingRotation -= stepAngle;
+        }
+
+        globalPhase += baseOmega;
+
+        let sumX = 0, sumY = 0, sumZ = 0;
+
+        arrows.forEach(a => {
+            if (pulseActive) {
+                // Synchronized nutation in the rotating frame
+                let xNew = a.x * Math.cos(stepAngle) + a.y * Math.sin(stepAngle);
+                let yNew = -a.x * Math.sin(stepAngle) + a.y * Math.cos(stepAngle);
+                a.x = xNew; a.y = yNew;
+            } else {
+                // Random thermal drift (Entropy)
+                const thermal = 0.08 * (1 - B);
+                a.x += (Math.random() - 0.5) * thermal;
+                a.y += (Math.random() - 0.5) * thermal;
+                a.z += (Math.random() - 0.5) * thermal;
+                
+                // T1 Recovery (Alignment)
+                a.y += (-1 - a.y) * B * T1;
+
+                const len = Math.sqrt(a.x*a.x + a.y*a.y + a.z*a.z);
+                a.x /= len; a.y /= len; a.z /= len;
+            }
+
+            // Visual Precession (Applying synchronized phase)
+            const cosP = Math.cos(globalPhase);
+            const sinP = Math.sin(globalPhase);
+            const vX = a.x * cosP + a.z * sinP;
+            const vZ = -a.x * sinP + a.z * cosP;
+
+            sumX += vX; sumY += a.y; sumZ += vZ;
+            drawArrow(a.xPos, a.yPos, (vX + vZ * 0.4) * arrowLength, a.y * arrowLength, 'rgba(0, 255, 136, 0.2)', 1.2, 3);
+        });
+
+        const cx = canvas.width / 2; const cy = canvas.height / 2;
+        const mx = sumX / numArrows; const my = sumY / numArrows; const mz = sumZ / numArrows;
+        
+        const sig = Math.sqrt(mx*mx + mz*mz);
+        sigFill.style.width = (sig * 100) + "%";
+
+        ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+        ctx.beginPath(); ctx.arc(cx, cy, 160, 0, Math.PI*2); ctx.stroke();
+
+        drawArrow(cx, cy, (mx + mz * 0.4) * 160, my * 160, '#ffcc00', 7, 18);
+        requestAnimationFrame(animate);
+    }
+    animate();
+</script>
+</body>
+</html>
