@@ -1,581 +1,565 @@
 <!DOCTYPE html>
-<html>
-<title>Dr. T. Bensky - Cal Poly Physics Dept.</title>
+<html lang="en">
+<head>
+  <title>Dr. T. Bensky - Cal Poly Physics Dept.</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohWpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <style>
+    :root {
+      --calpoly-green: #154734;
+      --calpoly-gold: #bd8b13;
+      --ink: #1f2933;
+      --muted: #5f6c7b;
+      --paper: #ffffff;
+      --bg: #f4f6f8;
+      --soft-blue: #eef5ff;
+    }
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(189, 139, 19, 0.14), transparent 32rem),
+        linear-gradient(180deg, #f8fafc 0%, var(--bg) 100%);
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.6;
+    }
 
-<Style>
-  h3 {
-  background-color: #0a0a0a;
-  padding: 2px;
-  color: #fff;
-}
-</Style>
+    a {
+      color: #0b5ed7;
+      font-weight: 600;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 2px;
+    }
 
-<body style="margin-left: 10px; margin-right: 10px; margin-top: 20px; font-size: 16pt">
+    a:hover {
+      color: #084298;
+    }
 
-<div class="container">
-    <div class="row">
-        <div class="col">
+    .site-shell {
+      max-width: 980px;
+    }
 
-            <center>
-              <h1>Dr. Bensky's London/Summer 2026 🇬🇧 blog</h1>
-              <p/><p/>
-            </center>
+    .blog-header {
+      background: linear-gradient(135deg, var(--calpoly-green), #0b1f33 70%);
+      color: #fff;
+      padding: 3rem 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 0 0 28px 28px;
+      text-align: center;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+    }
 
+    .blog-header h1 {
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
 
-              <h3 class="mt-5">4-May-2026</h3>
+    .blog-header .lead {
+      color: rgba(255, 255, 255, 0.88);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .post {
+      background: var(--paper);
+      border-radius: 22px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .post-date {
+      display: inline-block;
+      background: #0a0a0a;
+      color: white;
+      padding: 0.55rem 0.85rem;
+      border-radius: 12px;
+      margin-bottom: 1.2rem;
+      font-size: 1.45rem;
+      font-weight: 700;
+    }
+
+    h4 {
+      margin-top: 1.5rem;
+      color: var(--calpoly-green);
+      font-weight: 750;
+    }
+
+    ul, ol {
+      padding-left: 1.45rem;
+    }
+
+    li {
+      margin-bottom: 1rem;
+    }
+
+    li > ul,
+    li > ol {
+      margin-top: 0.6rem;
+    }
+
+    .callout {
+      background: var(--soft-blue);
+      border-left: 6px solid #1f3b73;
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      margin: 1.2rem 0;
+    }
+
+    blockquote {
+      background: #f1f4f8;
+      border-left: 6px solid var(--calpoly-gold);
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      margin: 1.3rem 0;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 1.2rem auto;
+      border-radius: 14px;
+    }
+
+    .embed {
+      position: relative;
+      width: 100%;
+      max-width: 760px;
+      margin: 1.5rem auto;
+      aspect-ratio: 16 / 9;
+    }
+
+    .embed iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 14px;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+    }
+
+    .reddit-wrap {
+      max-width: 760px;
+      margin: 1.5rem auto;
+    }
+
+    .quick-links {
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 18px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .quick-links h2 {
+      font-size: 1.2rem;
+      margin-bottom: 0.7rem;
+      color: var(--calpoly-green);
+      font-weight: 750;
+    }
+
+    .quick-links ul {
+      margin-bottom: 0;
+    }
+
+    .small-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      color: var(--muted);
+      text-align: center;
+      padding: 2rem 0 3rem;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 576px) {
+      body {
+        font-size: 16px;
+      }
+
+      .blog-header {
+        padding: 2.2rem 1rem;
+        border-radius: 0 0 20px 20px;
+      }
+
+      .post {
+        padding: 1.1rem 1rem;
+        border-radius: 16px;
+      }
+
+      .post-date {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="blog-header">
+    <h1>Dr. Bensky's London/Summer 2026 🇬🇧 Blog</h1>
+    <p class="lead">Updates, reminders, travel tips, and London-y things for our Cal Poly summer program.</p>
+  </header>
+
+  <main class="container site-shell">
+    <section class="quick-links">
+      <h2>Quick links</h2>
+      <ul>
+        <li><a href="https://join.slack.com/t/calpolyinlond-hez8223/shared_invite/zt-3s41bsy6f-~ueTTG18BPcwqlLHe8WgTg" target="_blank" rel="noopener">Join our London 2026 Slack</a></li>
+        <li><a href="https://abroad.calpoly.edu/index.cfm?FuseAction=Programs.ViewProgramAngular&id=10889" target="_blank" rel="noopener">Cal Poly London/Summer 2026 program page</a></li>
+        <li><a href="https://maps.app.goo.gl/uWbwWrqgeP2rcTtp9" target="_blank" rel="noopener">Hyde Park Gate housing area</a></li>
+        <li><a href="https://maps.app.goo.gl/s6Vv5ZiHjsfq2SCs9" target="_blank" rel="noopener">FIE Foundation House</a></li>
+      </ul>
+    </section>
+
+    <article class="post">
+      <h3 class="post-date">4-May-2026</h3>
+      <ul>
+        <li>It's May. That means saying "We'll be in London next month" is a true statement!!</li>
+
+        <li>We'll have an <strong>in-person pre-departure meeting</strong> on <strong>Thursday, May 14th, from 11:10-12 in 35-104</strong> (Kennedy Library). This is one week from <em>this Thursday.</em></li>
+
+        <li>A few supplies for my class (ASTR-324):
+          <ul>
+            <li><a href="https://www.amazon.com/gp/aw/d/B08TLK1ZSV" target="_blank" rel="noopener">Sketchbook</a> or equivalent. No larger than A3 in size.</li>
+            <li><a href="https://www.amazon.com/Amazon-Basics-Sketching-Supplies-Sharpener/dp/B078J6ZRRG" target="_blank" rel="noopener">Some sketching pencils</a>. No big kit needed. Keep it small; you only need one or two pencils.</li>
+            <li>Two books (get Kindle/e-reader versions if possible). All devices (laptops, phones, etc.) have a Kindle app.
               <ul>
-                <li> It's May. That means  saying "We'll be in London next month" is a true statement!!
-                  <p/><p/> 
-                <li> We'll have an <b>in-person pre-depature meeting</b> on <b>Thursday, May 14th, from 11:10-12 in 35-104</b> (Kennedy Library). This is one week from <i>this Thursday.</i>
-                  <p/><p/>
-
-                <li> A few supplies for my class (ASTR-324):
-                  <ul>
-                    <li> <a href=https://www.amazon.com/gp/aw/d/B08TLK1ZSV target=_blank>Sketchbook</a> or equivalent. No larger than A3 in size.
-                    <li> <a href=https://www.amazon.com/Amazon-Basics-Sketching-Supplies-Sharpener/dp/B078J6ZRRG target=_blank>Some sketching pencils</a>.  No big kit needed. Keep it small; you only need one or pencils.
-                    <li> Two books (get Kindle/e-reader versions if possible). All devices (laptops, phones, etc.) have a Kindle app.
-                    
-                      <ul>
-                        <li> <a href=https://www.amazon.com/Longitude-Genius-Greatest-Scientific-Problem-ebook/dp/B003WUYE66 target=_blank>This book</a>. Would be good if you can read it by the time we get there. (OK to read it there though.)
-                        <li> <a href=https://www.amazon.com/Longitude-Time-Navigation-Tom-Bensky-ebook/dp/B00HKMCE0A  target=_blank>And this book</a> (Explains the science of our class, the other book leaves out.)
-                      </ul>
-                  </ul>
-
-                  <p/><p/> 
-
-                   <li> For your other class, ISLA-316, I am not sure what it will entails. I expect you'll hear from your instructor soon.
-                  <p/><p/>
-
-                <li> In a previous post, I mentioned that you can find Banksy art in and around London.  He/She/They have been active recently:
-                  <p/><p/>
-                  <center>
-                    <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="740">
-                    <a href="https://www.reddit.com/r/pics/comments/1sznyef/oc_new_banksy_artwork_a_man_blinded_by_his_flag/">[OC] New Banksy artwork, A man blinded by his flag</a><br> by
-                    <a href="https://www.reddit.com/user/hakh-ti-cxamen/">u/hakh-ti-cxamen</a> in
-                    <a href="https://www.reddit.com/r/pics/">pics</a>
-                    </blockquote><script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
-                  </center>
-              <p/><p/> 
-                <li> As you may know, the UK has a king, but elected leaders actually run the government. 
-                    This system is called a constitutional monarchy. King Charles III, however, recently visited the U.S. and addressed Congress:
-                    <p/><p/>
-                    <center>
-                      <iframe width="560" height="315" src="https://www.youtube.com/embed/tCUZWnX8JIM?si=klPJoDXv3rGnI1qE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </center>
-                  </li>
-
-
-
-
-
+                <li><a href="https://www.amazon.com/Longitude-Genius-Greatest-Scientific-Problem-ebook/dp/B003WUYE66" target="_blank" rel="noopener">This book</a>. Would be good if you can read it by the time we get there. (OK to read it there though.)</li>
+                <li><a href="https://www.amazon.com/Longitude-Time-Navigation-Tom-Bensky-ebook/dp/B00HKMCE0A" target="_blank" rel="noopener">And this book</a> (Explains the science of our class, the other book leaves out.)</li>
               </ul>
+            </li>
+            <li>Optional (but if you're so motivated), please read this <a href="https://www.amazon.com/Much-About-Nothing-Fear-Shakespeare/dp/1411401018" target="_blank" rel="noopener">Much Ado...</a> or <a href="https://tubitv.com/movies/348941/much-ado-about-nothing" target="_blank" rel="noopener">watch this</a> or <a href="https://www.youtube.com/watch?v=Aqo0Gk6QpCY" target="_blank" rel="noopener">this</a> (1 min long), PLEEEEEEEZE!!!</li>
+          </ul>
+        </li>
 
-             <h3 class="mt-5">24-April-2026</h3>
-               <ul>
-              <li> <b>Community Engagement in London (the work in London and leadership program)</b>. FIE has enrolled you all into two leadership workshops on this, taught by London-based instructor Dr. Rebecca Pollack (of FIE). They are scheduled for Mon 22nd June and Wed 29th July from 10.00–12.00 (beginning and near end of the program). So our class schedule has become:
-                 <p/><p/> 
-                <ul>
-                  <li> ASTR-324 T/TH 9:10am–12:20pm, for 6 weeks
-                  <li> ISLA-316 M/T/W 2:10pm–4:25pm, for 5 weeks
-                  <li> Leadership workshop Mon June 22 10-12
-                  <li> Leadership workshop Wed July 29 10-12
-                  <li> + a few TBA class related day trips and activities (stay tuned)  
-                </ul>
-              <p/><p/> 
+        <li>For your other class, ISLA-316, I am not sure what it will entail (other than the 5-week, M/T/W schedule posted below, 24-April). I expect you'll hear from your instructor, <a href="https://www.fie.org.uk/london-faculty/351-elizabeth-cooper-phd" target="_blank" rel="noopener">Dr. Elizabeth Cooper</a> soon.</li>
 
-              <li> <b>Academics.</b> I am hard at work planning our 6-weeks of academics. Here is a <a href=https://docs.google.com/document/d/1GLkWmlszMuyQJjTAvM5NoWzmPvcPzDv3Q956XH31jrA/edit?usp=sharing target=_blank>DRAFT SCHEDULE</a>. 
-                It's subject to change and very preliminary, but should give you an approximate look at our 6-week program.
-                <p/>
-                <p/>
-              <li> <b>Transcripts.</b>  You may be getting emails from FIE about needing your transcripts. Please send them in. Cal Poly, FIE, or the International Center <i>DOES NOT</i> do this for you. Thank you!
-                <p/>
-                <p/>
+        <li>In a previous post, I mentioned that you can find Banksy art in and around London. He/She/They (?) have been active recently:
+          <div class="reddit-wrap">
+            <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="740">
+              <a href="https://www.reddit.com/r/pics/comments/1sznyef/oc_new_banksy_artwork_a_man_blinded_by_his_flag/">[OC] New Banksy artwork, A man blinded by his flag</a><br>
+              by <a href="https://www.reddit.com/user/hakh-ti-cxamen/">u/hakh-ti-cxamen</a> in <a href="https://www.reddit.com/r/pics/">pics</a>
+            </blockquote>
+            <script async src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
+          </div>
+        </li>
 
-              <li> <b>Slack</b>.  I think all of you have joined our Slack. If not, please <a href=https://join.slack.com/t/calpolyinlond-hez8223/shared_invite/zt-3s41bsy6f-~ueTTG18BPcwqlLHe8WgTg>click here</a> to join.  We'll make it all more of a priority
-                to check and use Slack as our trip approaches (and especially while we're there--I'd like you all to install the Slack app on your phone and get its notifications), but for now, please feel free to connect with other London 2026ers if you wish.
-                <p/>
-                <p/>
+        <li>As you may know, the UK has a king, but elected leaders actually run the government. This system is called a constitutional monarchy. King Charles III, however, recently visited the U.S. and addressed Congress:
+          <div class="embed">
+            <iframe src="https://www.youtube.com/embed/tCUZWnX8JIM?si=klPJoDXv3rGnI1qE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </li>
 
-              <li> <b class="fs-2">Your safety</b> A few things to think about concerning your health and safety (Dr. Bensky just completed a 'study abroad coordinator' training program).
-                <p/><p/>
-                <b>#1 thing to remember: We won't be at home anymore. Things you expect to happen at home may not happen abroad.</b> Yes, it's an English speaking country, but the culture there is markedly different than ours.
-                <p/><p/>
+        <li>There have been a few rumblings on the #general channel on <a href="https://calpolylondon2026.slack.com" target="_blank" rel="noopener">our Slack.</a> Weigh in if you want!</li>
+      </ul>
+    </article>
 
-                 <blockquote class="ms-5 mt-3">
-                  <b>📚 Being a student</b> 
-                  <ul class="ms-5">
-                    <li> Keep in mind that when on this program, we're all representing Cal Poly.  This means we're bound to the usual responsibilities as if we were on campus (<a href=https://osrr.calpoly.edu target=_blank>see here</a>).
+    <article class="post">
+      <h3 class="post-date">24-April-2026</h3>
+      <ul>
+        <li><strong>Community Engagement in London (the work in London and leadership program)</strong>. FIE has enrolled you all into two leadership workshops on this, taught by London-based instructor Dr. Rebecca Pollack (of FIE). They are scheduled for Mon 22nd June and Wed 29th July from 10.00–12.00 (beginning and near end of the program). So our class schedule has become:
+          <ul>
+            <li>ASTR-324 T/TH 9:10am–12:20pm, for 6 weeks</li>
+            <li>ISLA-316 M/T/W 2:10pm–4:25pm, for 5 weeks</li>
+            <li>Leadership workshop Mon June 22 10-12</li>
+            <li>Leadership workshop Wed July 29 10-12</li>
+            <li>+ a few TBA class related day trips and activities (stay tuned)</li>
+          </ul>
+        </li>
 
-                </blockquote>
+        <li><strong>Academics.</strong> I am hard at work planning our 6-weeks of academics. Here is a <a href="https://docs.google.com/document/d/1GLkWmlszMuyQJjTAvM5NoWzmPvcPzDv3Q956XH31jrA/edit?usp=sharing" target="_blank" rel="noopener">DRAFT SCHEDULE</a>. It's subject to change and very preliminary, but should give you an approximate look at our 6-week program.</li>
 
-                <blockquote class="ms-5 mt-3">
-                  <b> 💷 Pickpockets</b> 
-                  <ul class="ms-5">
-                   <li>London (sidewalks, tube cars, buses, etc.) will get very crowded, which is perfect for pickpockets. Keep your phones, credit cards, etc. in front (zipped) pockets or zipped bags. Things <a href=https://www.amazon.com/Day-Tip-Money-Belt-Undercover/dp/B01M594B5K/ target=_blank>like this</a> can be helpful.
-                    This will not work so well:
-                  <p/><p/>
-                <center><img src=phone_pocket.png class="img-fluid" alt="A phone in your back pocket"></center>
-                <p/><p/>
-                  
-                  </ul>
-                      <p/><p/> 
+        <li><strong>Transcripts.</strong> You may be getting emails from FIE about needing your transcripts. Please send them in. Cal Poly, FIE, or the International Center <em>DOES NOT</em> do this for you. Thank you!</li>
 
-                </blockquote>
+        <li><strong>Slack.</strong> I think all of you have joined our Slack. If not, please <a href="https://join.slack.com/t/calpolyinlond-hez8223/shared_invite/zt-3s41bsy6f-~ueTTG18BPcwqlLHe8WgTg" target="_blank" rel="noopener">click here</a> to join. We'll make it all more of a priority to check and use Slack as our trip approaches (and especially while we're there--I'd like you all to install the Slack app on your phone and get its notifications), but for now, please feel free to connect with other London 2026ers if you wish.</li>
 
-                <blockquote class="ms-5 mt-3">
-                  <b>🍻 Alcohol</b> 
-                  <ul class="ms-5">
-                    <li> It's OK not to drink. 
+        <li><strong class="fs-2">Your safety</strong> A few things to think about concerning your health and safety (Dr. Bensky just completed a 'study abroad coordinator' training program).
+          <div class="callout">
+            <strong>#1 thing to remember: We won't be at home anymore. Things you expect to happen at home may not happen abroad.</strong> Yes, it's an English speaking country, but the culture there is markedly different than ours.
+          </div>
 
-
-                    <li> In England, the culture around "the pub" is a social cornerstone, but the legal and social rules differ from the U.S.
-                 
-
-                  <li> The Legal Age is 18: Unlike the U.S., students are legally allowed to buy and consume alcohol. However, many bars and clubs have a "Challenge 25" policy—if you look under 25, you must show a physical ID (a passport is the most reliable for international students).
-                   
-
-                  <li> Drink Spiking: This is a serious concern in major cities. Rule: Never leave a drink unattended, even for a moment.  Tip: If you’re at a club, use a "Spikey" (a plastic stopper) or keep your hand over the top of your bottle/glass.
-                   
-                </blockquote>
-
-<blockquote class="ms-5">
-<b>🚫 Drugs</b>
-<ul class="ms-5">
-  <li> The UK has a very zero-tolerance approach to drugs for international visitors.
- 
-<li> Strict Classification: Drugs are categorized as Class A (Cocaine, MDMA, LSD), Class B (Cannabis, Ketamine), and Class C.
-  <li> The Risk: Possession of even small amounts of Class B drugs (like Cannabis) can lead to arrest and immediate deportation. In the UK, "medical" marijuana cards from the U.S. are not recognized.
- 
-<li> Nitrous Oxide: Commonly seen in "balloons" in London nightlife, this was recently made illegal (Class C). Possession can lead to a criminal record.
-</blockquote>
-
-<blockquote class="ms-5">
-<b>📱 Social (dating) apps</b>
-<ul class="ms-5">
-
-<li> The "First Date" Rule: Always meet in a highly public, well-lit place (like a busy café or pub). Never go directly to someone's flat or invite them to your housing on the first meeting.
-
-<li> Share Your Location: Before heading out, students should send their "Live Location" (via WhatsApp or Find My) to at least one other person in the study abroad group.
-
-<li> <b>"Ask for Angela"</b>: This is a safety initiative across the UK. If a student is on a date and feels unsafe or uncomfortable, they can go to the bar and "Ask for Angela." The staff will understand they need help getting out of the situation discreetly (e.g., calling a taxi or providing a safe exit).
-</ul>
-
-</blockquote>
-
-<blockquote class="ms-5">
-<b>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Key Safety Essentials</b>
-<ul class="ms-5">
-  <li> Emergency Number: Dial 999 for emergencies (Police/Ambulance). Dial 101 for non-emergencies.
-
-  <li> Transport: The "Tube" (subway) stops running around midnight on most lines (except the Night Tube on Fridays/Saturdays).
-
-  <li> Stay in "Pods": Encourage students to use the "buddy system" when out at night. No one should ever head home alone after a night of drinking.
-</ul>
-</blockquote>
-
-<li> <b>The Tube (or Underground—but not the “subway”)</b>. It can be a bit of a sensory game. Why? Well, it’s all underground, so as you travel there’s not much to see out the windows, and there’s really no indication of which direction you’re going.
-
-So when you climb back up to street level at your destination, what you see can sometimes be a surprise. A big one for me is getting off at the Westminster stop and emerging onto the street. This is what you’ll see: the “Great Clock of Westminster” (or the “Elizabeth Tower”—but not “Big Ben”)—and it is HUGE!! (And of couse the Thames is right there.  Ahhh London!)
-  <p/><p/>
-                <center><img src=great_clock.jpg class="img-fluid" alt="The great clock at westminster"></center>
-                <p/><p/>
-
-
-</ul>
-               <h3 class="mt-5">07-April-2026: 71 days until we'll be in London!😀</h3>
-
-            Congratulations again to our Summer 2026/London group. The enrollment settled down to 22 students, which is a perfect size for our program.  A few things:
-            <p/><p/>
+          <blockquote>
+            <strong>📚 Being a student</strong>
             <ul>
-              <li> A few of you have emailed me about this: <b>YES! Buy your plane tickets!</b>  
-                Plan on landing in London on Thursday June 18th (their local time).  At the end, check out time for your flat is Saturday August 1st around noon.
-              
-              <p/>
-              <p/>
-              
-              <li> <b>Visitors (parents, friends, etc.):</b> You'll be pretty busy during the week (Mon-Thurs), so please limit your time with visitors to Fri/Sat/Sun.  
-                They generally <b>cannot</b> tag along with our excursions and definitely cannot stay with you in your flat (FIE rules). Please also don't plan on missing any class or activities on their behalf.  
-                You'll be busy on some evenings (during the week) with activities too. It maybe best to connect with visitors at the end of the program (July 31st and onward).
-
-                <p/>
-              <p/>
-
-              <li> FIE is organizing an optional <b>work in London and leadership</b> component to our program, which is coming along nicely. I'd like you <a>ALL</a> to consider participating. 
-                <p/><p/>
-                I'll make a more formal annoucement about this soon, but in addition to two leadership workshops (offered by an FIE-based professor), 
-                you can earn something called a <a href=https://vinspired.com/awards target="_blank">Vinspired Certificate</a> for voluntering for at least 10 hours with a London-based community organization such as: 
-              <blockquote class="ms-5">
-                <i>
-                  <ul>
-                    <li> The Felix Project (distribute food to charities)
-                    <li> FoodCycle (cook and share meals using surplus food)
-                    <li> City Harvest London
-                    <li> Refugee Community Kitchen
-                    <li> The Conservation Volunteers
-                    <li> Thames21
-                    <li> The Little Village (clothes for young children in need) 
-                    <li> And many others (including some self-paced local research projects).
-                  </ul>
-                </i>
-              </blockquote>
-              The Vinspired certificate would be a <b>great résumé item</b> for you upon return and a chance to network with native Londoners. Imagine YOU, getting on the tube and going off to 'work' in London!
-
-                 <p/>
-              <p/>
-
-              <li> <b>Rain</b>: We'll all be out and about quite a bit and when the sky is grey it can suddenly start pouring for 10 min. But this doesn't stop anything from going on. Just be prepared maybe with an umbrella or a rain jacket.  I don't always do this, but
-                going out with a small backpack (with a water bottle and perhaps rain gear) is not a bad idea. (It also helps if you pick up groceries, etc. on your way back to your flat.) I've definitely gone out thinking "nahh..it won't rain." (Then it does of course.)  London (and England) is very lush and green everywhere (because of the rain).
-
-                <p/><p/>
-
-                 <li> <b>Walking</b>. In California we're used to having our own cars to get around.  In London, we'll go six weeks with no car at all.  Prepare to do <b>a lot of walking</b> during this trip! Examples: 15 min. walk from your flat to the FIE classroom. Kensington High Street tube stop to your flat: 15 min. Lots of other walking between tube lines and street level destinations. Sometimes walking from one tube line to another to continue your trip can require a lot of walking.  Walking to stores to get food and groceries (and carrying what you buy back with you).
-
-                  <p/><p/>
-
-                 <li> <b>First arrival: Heathrow Airport to your flat</b>. You can Uber, but: Why not try the Tube? (London street traffic is rough.) The Piccadilly line is the only one that serves Heathrow Airport. Get on the one to "Central London" (or Cockfosters) right at the airport. You can take it straight to the Gloucester stop (about 50 min), then get out and walk 0.7 miles to your flat.  (Yes! Pulling your suitcase the whole way!)
-
-  <p/><p/>
-
-
-                <li> <b>We don't just drop into London and build this program from scratch.</b> We are hosted by a company called the "Foundation for International Education" or (FIE).  They provide us with housing, classroom space, WiFi, etc. They also offer all kinds of services and dedicated staff like student life experts, councelors, etc. Any service Cal Poly offers while on campus in SLO, FIE offers to us in London. The building they have that we'll meet in with classroom space is called the "Foundation House." It's at 114 Cromwell Road, about a 15 min walk from your flat at Hyde Park Gate.
-
-
-
-
+              <li>Keep in mind that when on this program, we're all representing Cal Poly. This means we're bound to the usual responsibilities as if we were on campus (<a href="https://osrr.calpoly.edu" target="_blank" rel="noopener">see here</a>).</li>
             </ul>
+          </blockquote>
 
-              <hr/>
-
-               <h3>11-March-2026</h3>
-
-            Hey! Congratulations on being accepted to the London program! About 30 of you (Cal Poly students) are signed up, which is awesome!  
-            <p/>
-            <p/>
-            I am deep into the planning
-            stages of our program (working with my liaison in London) and have some <i>really fun</i> things planned for our ASTR-324 class. I promise you'll enjoy the credit you'll earn in this class.
-            <p/>
-            <p/>
-            A few things:
+          <blockquote>
+            <strong>💷 Pickpockets</strong>
             <ul>
-              <li> <a href="https://join.slack.com/t/calpolyinlond-hez8223/shared_invite/zt-3s41bsy6f-~ueTTG18BPcwqlLHe8WgTg">Join our London 2026 Slack!</a>
-                <ul> 
-                  <li> This will be a great fast and easy communication mode while in London ("meet at Trafalgar Square," "oh no, it's raining!", etc.)
-                    <li> You can use it <b>now</b> to connect with and meet others in the program (including Prof. Bensky--ask any question you have!)
-                  </ul>
-                <p/>
-                <p/>
-
-                <li> Class Schedule. This could change, but at the moment, classes are scheduled as:
-                    <ul>
-                      <li> ASTR-324 T/TH 9:10am–12:20pm, for 6 weeks
-                      <li> ISLA-316 M/T/W 2:10pm–4:25pm, for 5 weeks
-                      <li> Class supplies (books, etc.) are forthcoming. 
-                      <li> The long duration of the classes allows us time to go out and about in London for class. We'll never be in the classroom the whole scheduled time of a class.
-
-                    </ul>
-                   
-                    <p/>
-                    <p/>
-
-                <li> A "pre-depature" meeting will be scheduled for sometime in May (you'll hear about it).
-                  <p/>
-                  <p/>
-              <li> England vs. the United Kingdom. Remember: United Kingdom = England + Scotland + Wales + Northern Ireland.
-                <p/><p/>
-                <center><img src=uk.jpg class="img-fluid" alt="map of the United Kingdom"></center>
-                <p/><p/>
-
-              <li> Was intrigued to see this: <a href=https://www.nls.uk/collections/stories/scottish-history/mary-queen-of-scots-last-letter/>Mary Queen of Scots last letter</a>.  I might try to pop up to Scotland and see this some weekend we're there. (We'll "see" her on our tour of Westminster Abbey.)
-                 <p/><p/>
-
-                 <li> Right across the street from your flat: <a href=https://www.bst-hydepark.com>https://www.bst-hydepark.com</a>
-                  <p/>
-                    <p/>
-                 <li> Kind of a touching story: You probably all know this, but "mind the gap" comes from a gap between a tube car and the platform that can open up due to irregularities in construction at various stations. So you'll hear "mind the gap" announced a lot in the tube stations.
-                  <p/><p/>
-                  <center>
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/s_i59j74g3s?si=jPzjPfl_-lwdbO1m" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </center>
-
-                    <li> Do you know why you'll see these on some cross-walks?
-                  <center>
-                      <center><img src=look_right.png class="img-fluid" alt="London look-right cross walk"></center>
-               
-                    </center>
-
-                    <p/>
-                    <p/>
-
-
-                 <li> Silly stuff
-                  <ul>
-                    <li> Be ready to buy a towel when you get there (not supplied by your housing).  Kind of large to pack. Many places to get one near your flat.  Can be your first errand!
-                      <li> Also (if needed) it's easier to buy a 220V hair dryer over there too, instead of lugging a 110V-to-220V transformer and your home hair dryer.
-                        <li> Your phone/laptop chargers all work directly on 220V in the UK. But the wall-plug is different.  <a href=https://www.amazon.com/Adapter-TESSAN-Converter-Outlets-Scotland/dp/B0BPTGCNFK/>These</a> and <a href=https://www.amazon.com/Adapter-OFOAEEA-Essentials-Scotland-British/dp/B0BPMG9BRM/>these</a> can be helpful.
-                        <li> Packing: 1) Pack what you "need." 2) Get rid of 50% of it. 3) Go! 
-                      </ul>
-
-                  <p/><p/>
-
-                  
-                </li>
-
+              <li>London (sidewalks, tube cars, buses, etc.) will get very crowded, which is perfect for pickpockets. Keep your phones, credit cards, etc. in front (zipped) pockets or zipped bags. Things <a href="https://www.amazon.com/Day-Tip-Money-Belt-Undercover/dp/B01M594B5K/" target="_blank" rel="noopener">like this</a> can be helpful. This will not work so well:</li>
             </ul>
-           
-            <p/><p/>
-
-             <h3>22-Jan-2026</h3>
-             Happy new year everyone. Hope you're all still thinking about going to London this summer. Here's a few updates on the program:
-              <p/><p/>
-             
-             <h4>Applications are still open and will close around March 1st</h4>
-             I pulled the latest list, and it looks like about 8 of you have completed your applications. Awesome!🎉  I'd love to have many, many more of you complete yours as well! You have a little over a month before the applications close.
-
-              <p/><p/>
-
-              <h4>Short video</h4>
-              I made short promotional video about my class (ASTR-324) and being in London. This is supposed to get pushed out to the International Center's
-              Instagram on the 29th. (I hope you like it!)
-             <p/><p/>
-             
-             <center>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/v86lm_wtYGY?si=rhnvsx27tAMuJsHC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>          </center>
-          
-
-              <p/><p/>
-
-              <h4>"London-y" Things</h4>
-              Just a few musing about London
-              <ul>
-                <li> If you like the graffiti artist Banksy (no, not me. I'm Bensky), you can go around London finding some of his/her (?) work. There are 4 or 5 "Banksies" in the city. It's kind of fun to go around and find them.</li>
-                              <p/><p/>
-                
-                <li> Even though they speak English there, there's plenty to learn about their language.  Such as:</li>
-                
-                              <p/><p/>
-                <ul>
-                  <li> A "subway" is an under-a-road walkway.  It does not refer to the "tube" or "underground" that is London's famous transport mode.</li>
-                  <li> You'll see a lot of "look left" signs as you cross streets. Do you know why?</li>
-                  <li> A "boot" is the truck of a car, and the "bin" is the trash. Restrooms are "water closets" (WCs), and if you need some medication, go the "chemist" (not pharmacist)</li>
-                    <li> Sometimes, you'll be a little intimidated by Londoners' accents, and will have to listen a little closer when communicating.  I've have students actually ask me to tell them what someone (with an accent) just said. Hey! It's just English!</li>
-                </ul>
-                              <p/><p/>
-                <li> Your personal space will shrink quit a bit everywhere you go. Everything is smaller (rooms, gyms, stores, etc.) and their are more people there.</li>
-                              <p/><p/>
-                <li> <a href=https://www.reddit.com/r/explainlikeimfive/comments/1pwgred/eli5_why_did_the_monarchy_of_the_united_kingdom/>This</a> is an interesting explanation of today's English monarchy.</li>
-              </ul>
-
-                <h3>18-Dec-2025</h3>
-
-            <p/><p/>
-
-            🎉Hey everyone, good job finishing up fall quarter!  Just a quick London update before you all disappear for a well-deserved break.
-
-          <p/><p/>
-
-          <h4>Applications open!</h4>
-          Applications for London/Summer 2026 are being accepted now.  <a href=https://abroad.calpoly.edu/index.cfm?FuseAction=Programs.ViewProgramAngular&id=10889>Click here</a> and find the "Apply Now" button! (Still no rush--the deadline is in March.)
-
-            <p/><p/>
-
-            <h4>The London Tube</h4>
-            In London, the underground "subway" or just "underground" or "the tube" will be a big part of our lives. It's what quickly and efficiently will wisk us all over greater London.   You'll get a free pass for Zones 1 and 2 (see the light gray shading on the map).
-
-            I put a full map of it here.
-
-             <center>
-              <img src=tube_full.png class="img-fluid" alt="tube map">
-          </center> 
-
-                  <p/><p/>
-
-            I quite enjoy getting used to the tube and trying to find my way without using the map at all (it'll take you a couple of weeks). It definitely provides a welcome break out of the California "drive everywhere" culture for 6 weeks.  Here's some stops that will be key for us:
-
-
-        <p/><p/>
-                  <center>
-              <img src=tubemap/tubemap.001.png class="img-fluid" alt="tube map">
-          </center> 
-
-        <p/><p/>
-
-        <ol>
-        <li> The blue Picadilly line serves Heathrow Airport, were we'll all likely land.  (It's a very old and deep (literally) line; citizens hid down there during the WWII bombings of the city).
-        If you can, follow it eastward to Glocester Rd (NOT pronoucned "Gl-ow-ses-ter") which you can get off at and walk (20 min or so), so your flat. Don't worry about having your suitcase and all. Tons of poeple will be doing the same thing. 
-
-                   <p/><p/>
-
-         <li> High Street Kensington is a good stop for your flat too, but you'll have to figure out how to be sure you get on the Circle or District lines (yellow and green) to get there. You can transfer at Gloucester but be sure get on the "Edgeware Rd" line. The lead car on a tube, or the platform you stand on to wait for the tube, is always marked by the end of the line it is travelling to.
-
-                     <p/><p/>
-
-              <li> Yes, "Wimbledon" on the green line is <i>that</i> Wimbledon.  Yes, the tournment is on when we get there, and yes you can go. (Actually, if you want to go, you might look into getting tickets <b>now</b>.)
-
-                           <p/><p/>
-
-
-            <li> Earl's Court: that's my stop, which is near the faculty housing.
-
-           <p/><p/>
-       
-           <li>  Go to Picadilly Circus for theathers, shows, food, and tons of action. (Nearby Holborn is a good stop for the British Museum.)
-
-           <p/><p/>
-
-                    <li> Westminster if you want to go see this view (Westminster Abbey, Bensky's favorite place, kinda in the whole world is there too--red arrow):
-
-                       <p/><p/>
-          <center>
-          <img src=west.jpg class="img-fluid" alt="tube map">
-          </center> 
-
-              <p/><p/>
-
-
-
-                  
-                    </ol>
-
-          <h4>The map vs reality</h4>
-              
-                     <p/><p/>
-          The tube is also fun because it doesn't physically exist like the map. All the map tells you is that say Sloane Square is right after South Kensington if you're on the green  line (District line) to Upminster.  
-   <p/><p/>
-            <center>
-          <img src=tube_3.png class="img-fluid" alt="tube map">
-          </center> 
-
-   <p/><p/>
-      Geographically, it actually exists like this:
-
-        <p/><p/>
-                  <center>
-              <img src=https://preview.redd.it/l15eaf35fup21.gif?width=1198&format=mp4&s=9be8277039f947ac12f0249344a83948e61b0be2 class="img-fluid" alt="tube map">
-          </center> 
-
-              <p/><p/>
-
-              <h4>There's always that person...</h4>
-
-              Then there's this, WHICH YOU'RE NOT GOING TO DO!!!
-
-              <p/><p/>
-
-
-
-<center>
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/TaMiV3Wus9c?si=_FvXr3PczYY380_9&amp;start=132" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</center>
-
-            <p/><p/>
-            Have a nice holiday everyone!
-
-
-
-
-
-          <p/><p/>
-
-            <h3>19-Nov-2025</h3>
-
-            <p/><p/>
-
-            <h4>Applications for London/Summer 2026 are now open!</h4>
-            <b>There's nothing you need to do right now, but</b>:
-
-            <p/><p/>
-            <center><h5>
-             🎉You can apply for London/Summer 2026 <a href=https://abroad.calpoly.edu/index.cfm?FuseAction=Programs.ViewProgramAngular&id=10889>here</a>, by clicking the "Apply Now" button! 🎉</center>
-            </h5>
-          </p>
-            <p/><p/>
-            But again, you don't have to apply right now. This program is NOT first-come, first served and spaces are not be "used up" by early applicants.  This is <b>not</b> a competitive program, so focus on finishing up this busy quarter and going home for the holidays!  
-
-            <p/><p/>
-            
-
-            Admissions to the program will not happen until applications close in March.  <b>If you apply at any time between now and March, and meet the minimum requirements (2.4 GPA, no academic probation, good standing with the university), you'll be admitted.</b>
-            <p/><p/>
-
-            ALSO: On Friday (Nov 21), there's a virtual Study Abroad Workshop you can sign up for <a href=https://calendly.com/cpabroad/study-abroad-101-workshop-virtual?month=2025-11 target=_blank>here</a>.
-            
-            <p/><p/>
-
-            <h4>Ok, back to being in London 🇬🇧</h4>
-
-            One thing I love about the lifestyle in London is all of the walking we all end up doing. (So bring some good walking shoes.) Sure there's the tube and the buses to get around the city,
-            but all of the in-betweens are covered by walking.  It is very different from the California "drive everywhere, parking lots, etc." culture.
-
-            <p/><p/>
-
-            One of my favorite things to do in London is to go out and walk in any direction, to investigate the city.  When ready to go home, I just find a tube station and let "the underground" wisk me home. So, these walking trips only need to be "one way" (of walking). 
-
-            <p/><p/>
-
-            In your case (living at at <a href=https://maps.app.goo.gl/uWbwWrqgeP2rcTtp9 target=_blank>Hyde Park Gate</a>), you can start investigating by just heading across the street into Kensington Gardens and Hyde Park.  
-            <p/><p/>
-            
-            You can also turn due left out of your flat and head to "High Street Kensington" for the Whole Foods, shopping, and just a ton
-            of activity. The Design Museum is around there too. Walking toward our classroom building and Cromwell Road (opposite direction of Kensington Gardens), you can enjoy all of the eateries in South Kensington and of
-            course you must check out Harrods.  
-          
-        
-            <p/><p/>
-
-            On Friday nights, the museums (that all have free admission) are open until 9pm, so if you want some alone time with your favorite exhibit, painting, whatever, Friday nights are a great time to go, since all of the "tourists" have gone home.  
-
-            <p/><p/>
-
-            It's too far for a walk, but taking the tube to Trafalger Square, Bensky loves to roam around
-            the National Gallery on Friday nights, and in particular, just go stare at George Stubbs's 10 foot painting of a racehorse for a while. (p.s. I'm not artistic at all, but what can I say; London just changes you.)
-
-            <center>
-              <img src=whistlejacket.jpg class="img-fluid" alt="Wistlejacket in the National Gallery">
-          </center> 
-            
-            <p/><p/>
-
-            For you, getting back to your flat is best done by taking the tube to the High Street Kensington Station.
-
-              <p/><p/>
-
-            <center>
-              <img src=highstreettube.jpg class="img-fluid" alt="High Street Tube Stop">
-          </center> 
-
-             <p/><p/>
-
-  
-
-           <p/><p/>
-
-            <h3>24-Oct-2025</h3>
-            One of the (small) things I love about this trip is right when we arrive.  You'll all likely land at Heathrow airport,
-            and your first challenge abroad is getting to your flat.  You can take an Uber OR the blue Picadilly tube line to the Gloucester stop.  Taking the tube all on your own--tired from your flight, and with your luggage--can be one of your first independent/abroard challenges for yourself! One way or another, they'll be ready for your arrival at your flat (keys, room assignments, etc.)
-            <p/><p/>
-            The company that hosts us (FIE--the Foundation for International Education--<a href=https://maps.app.goo.gl/s6Vv5ZiHjsfq2SCs9>FIE building (114 Cromwell Rd)</a>, wants us there on Thursday
-            June 18, even though classes don't start until the following Monday.  So...we all have about 4 days to acclimate 
-            ourselves to London, our new home! I love this time so much, because it feels like a bit of an extension to the program.
-            <p/><p/>
-            During these initial 4 days, FIE usually has a couple of short tours planned around your new neighborhood (the area around your flat) at <a href=https://maps.app.goo.gl/uWbwWrqgeP2rcTtp9>Hyde Park Gate</a>, showing you good places to get groceries, coffee, and all. One of the tour stops is Kensington Palace, where Kate and William live.
-            It's sooo cooool walking to the palace, through those black wrought iron gates with gold highlights that lead into the palace.
-            <p/><p/>
-            And by the way--it's fun to jump on a double-decker bus and if you can, get the front seat on the top right in front
-            of the big window.  You'll feel like you're on top of the world!! And yes, the 211 bus is actually the one that goes
-            through Westminster.
-            <center>
-                <img src=bus.png class="img-fluid" alt="london bus 211 in front of the great clock at Westminster">
-            </center> 
-        </div>
-    </div>
-</div>
-
+            <img src="phone_pocket.png" class="img-fluid" alt="A phone in your back pocket">
+          </blockquote>
+
+          <blockquote>
+            <strong>🍻 Alcohol</strong>
+            <ul>
+              <li>It's OK not to drink.</li>
+              <li>In England, the culture around "the pub" is a social cornerstone, but the legal and social rules differ from the U.S.</li>
+              <li>The Legal Age is 18: Unlike the U.S., students are legally allowed to buy and consume alcohol. However, many bars and clubs have a "Challenge 25" policy—if you look under 25, you must show a physical ID (a passport is the most reliable for international students).</li>
+              <li>Drink Spiking: This is a serious concern in major cities. Rule: Never leave a drink unattended, even for a moment. Tip: If you’re at a club, use a "Spikey" (a plastic stopper) or keep your hand over the top of your bottle/glass.</li>
+            </ul>
+          </blockquote>
+
+          <blockquote>
+            <strong>🚫 Drugs</strong>
+            <ul>
+              <li>The UK has a very zero-tolerance approach to drugs for international visitors.</li>
+              <li>Strict Classification: Drugs are categorized as Class A (Cocaine, MDMA, LSD), Class B (Cannabis, Ketamine), and Class C.</li>
+              <li>The Risk: Possession of even small amounts of Class B drugs (like Cannabis) can lead to arrest and immediate deportation. In the UK, "medical" marijuana cards from the U.S. are not recognized.</li>
+              <li>Nitrous Oxide: Commonly seen in "balloons" in London nightlife, this was recently made illegal (Class C). Possession can lead to a criminal record.</li>
+            </ul>
+          </blockquote>
+
+          <blockquote>
+            <strong>📱 Social (dating) apps</strong>
+            <ul>
+              <li>The "First Date" Rule: Always meet in a highly public, well-lit place (like a busy café or pub). Never go directly to someone's flat or invite them to your housing on the first meeting.</li>
+              <li>Share Your Location: Before heading out, students should send their "Live Location" (via WhatsApp or Find My) to at least one other person in the study abroad group.</li>
+              <li><strong>"Ask for Angela"</strong>: This is a safety initiative across the UK. If a student is on a date and feels unsafe or uncomfortable, they can go to the bar and "Ask for Angela." The staff will understand they need help getting out of the situation discreetly (e.g., calling a taxi or providing a safe exit).</li>
+            </ul>
+          </blockquote>
+
+          <blockquote>
+            <strong>🏴 Key Safety Essentials</strong>
+            <ul>
+              <li>Emergency Number: Dial 999 for emergencies (Police/Ambulance). Dial 101 for non-emergencies.</li>
+              <li>Transport: The "Tube" (subway) stops running around midnight on most lines (except the Night Tube on Fridays/Saturdays).</li>
+              <li>Stay in "Pods": Encourage students to use the "buddy system" when out at night. No one should ever head home alone after a night of drinking.</li>
+            </ul>
+          </blockquote>
+        </li>
+
+        <li><strong>The Tube (or Underground—but not the “subway”)</strong>. It can be a bit of a sensory game. Why? Well, it’s all underground, so as you travel there’s not much to see out the windows, and there’s really no indication of which direction you’re going.
+          <p>So when you climb back up to street level at your destination, what you see can sometimes be a surprise. A big one for me is getting off at the Westminster stop and emerging onto the street. This is what you’ll see: the “Great Clock of Westminster” (or the “Elizabeth Tower”—but not “Big Ben”)—and it is HUGE!! (And of course the Thames is right there. Ahhh London!)</p>
+          <img src="great_clock.jpg" class="img-fluid" alt="The great clock at westminster">
+        </li>
+      </ul>
+    </article>
+
+    <article class="post">
+      <h3 class="post-date">07-April-2026: 71 days until we'll be in London!😀</h3>
+      <p>Congratulations again to our Summer 2026/London group. The enrollment settled down to 22 students, which is a perfect size for our program. A few things:</p>
+      <ul>
+        <li>A few of you have emailed me about this: <strong>YES! Buy your plane tickets!</strong> Plan on landing in London on Thursday June 18th (their local time). At the end, check out time for your flat is Saturday August 1st around noon.</li>
+
+        <li><strong>Visitors (parents, friends, etc.):</strong> You'll be pretty busy during the week (Mon-Thurs), so please limit your time with visitors to Fri/Sat/Sun. They generally <strong>cannot</strong> tag along with our excursions and definitely cannot stay with you in your flat (FIE rules). Please also don't plan on missing any class or activities on their behalf. You'll be busy on some evenings (during the week) with activities too. It may be best to connect with visitors at the end of the program (July 31st and onward).</li>
+
+        <li>FIE is organizing an optional <strong>work in London and leadership</strong> component to our program, which is coming along nicely. I'd like you <strong>ALL</strong> to consider participating.
+          <p>I'll make a more formal announcement about this soon, but in addition to two leadership workshops (offered by an FIE-based professor), you can earn something called a <a href="https://vinspired.com/awards" target="_blank" rel="noopener">Vinspired Certificate</a> for volunteering for at least 10 hours with a London-based community organization such as:</p>
+          <blockquote>
+            <ul>
+              <li>The Felix Project (distribute food to charities)</li>
+              <li>FoodCycle (cook and share meals using surplus food)</li>
+              <li>City Harvest London</li>
+              <li>Refugee Community Kitchen</li>
+              <li>The Conservation Volunteers</li>
+              <li>Thames21</li>
+              <li>The Little Village (clothes for young children in need)</li>
+              <li>And many others (including some self-paced local research projects).</li>
+            </ul>
+          </blockquote>
+          <p>The Vinspired certificate would be a <strong>great résumé item</strong> for you upon return and a chance to network with native Londoners. Imagine YOU, getting on the tube and going off to 'work' in London!</p>
+        </li>
+
+        <li><strong>Rain</strong>: We'll all be out and about quite a bit and when the sky is grey it can suddenly start pouring for 10 min. But this doesn't stop anything from going on. Just be prepared maybe with an umbrella or a rain jacket. I don't always do this, but going out with a small backpack (with a water bottle and perhaps rain gear) is not a bad idea. (It also helps if you pick up groceries, etc. on your way back to your flat.) I've definitely gone out thinking "nahh..it won't rain." (Then it does of course.) London (and England) is very lush and green everywhere (because of the rain).</li>
+
+        <li><strong>Walking</strong>. In California we're used to having our own cars to get around. In London, we'll go six weeks with no car at all. Prepare to do <strong>a lot of walking</strong> during this trip! Examples: 15 min. walk from your flat to the FIE classroom. Kensington High Street tube stop to your flat: 15 min. Lots of other walking between tube lines and street level destinations. Sometimes walking from one tube line to another to continue your trip can require a lot of walking. Walking to stores to get food and groceries (and carrying what you buy back with you).</li>
+
+        <li><strong>First arrival: Heathrow Airport to your flat</strong>. You can Uber, but: Why not try the Tube? (London street traffic is rough.) The Piccadilly line is the only one that serves Heathrow Airport. Get on the one to "Central London" (or Cockfosters) right at the airport. You can take it straight to the Gloucester stop (about 50 min), then get out and walk 0.7 miles to your flat. (Yes! Pulling your suitcase the whole way!)</li>
+
+        <li><strong>We don't just drop into London and build this program from scratch.</strong> We are hosted by a company called the "Foundation for International Education" or (FIE). They provide us with housing, classroom space, WiFi, etc. They also offer all kinds of services and dedicated staff like student life experts, counselors, etc. Any service Cal Poly offers while on campus in SLO, FIE offers to us in London. The building they have that we'll meet in with classroom space is called the "Foundation House." It's at 114 Cromwell Road, about a 15 min walk from your flat at Hyde Park Gate.</li>
+      </ul>
+    </article>
+
+    <article class="post">
+      <h3 class="post-date">11-March-2026</h3>
+      <p>Hey! Congratulations on being accepted to the London program! About 30 of you (Cal Poly students) are signed up, which is awesome!</p>
+      <p>I am deep into the planning stages of our program (working with my liaison in London) and have some <em>really fun</em> things planned for our ASTR-324 class. I promise you'll enjoy the credit you'll earn in this class.</p>
+
+      <p>A few things:</p>
+      <ul>
+        <li><a href="https://join.slack.com/t/calpolyinlond-hez8223/shared_invite/zt-3s41bsy6f-~ueTTG18BPcwqlLHe8WgTg" target="_blank" rel="noopener">Join our London 2026 Slack!</a>
+          <ul>
+            <li>This will be a great fast and easy communication mode while in London ("meet at Trafalgar Square," "oh no, it's raining!", etc.)</li>
+            <li>You can use it <strong>now</strong> to connect with and meet others in the program (including Prof. Bensky--ask any question you have!)</li>
+          </ul>
+        </li>
+
+        <li>Class Schedule. This could change, but at the moment, classes are scheduled as:
+          <ul>
+            <li>ASTR-324 T/TH 9:10am–12:20pm, for 6 weeks</li>
+            <li>ISLA-316 M/T/W 2:10pm–4:25pm, for 5 weeks</li>
+            <li>Class supplies (books, etc.) are forthcoming.</li>
+            <li>The long duration of the classes allows us time to go out and about in London for class. We'll never be in the classroom the whole scheduled time of a class.</li>
+          </ul>
+        </li>
+
+        <li>A "pre-departure" meeting will be scheduled for sometime in May (you'll hear about it).</li>
+
+        <li>England vs. the United Kingdom. Remember: United Kingdom = England + Scotland + Wales + Northern Ireland.
+          <img src="uk.jpg" class="img-fluid" alt="map of the United Kingdom">
+        </li>
+
+        <li>Was intrigued to see this: <a href="https://www.nls.uk/collections/stories/scottish-history/mary-queen-of-scots-last-letter/" target="_blank" rel="noopener">Mary Queen of Scots last letter</a>. I might try to pop up to Scotland and see this some weekend we're there. (We'll "see" her on our tour of Westminster Abbey.)</li>
+
+        <li>Right across the street from your flat: <a href="https://www.bst-hydepark.com" target="_blank" rel="noopener">https://www.bst-hydepark.com</a></li>
+
+        <li>Kind of a touching story: You probably all know this, but "mind the gap" comes from a gap between a tube car and the platform that can open up due to irregularities in construction at various stations. So you'll hear "mind the gap" announced a lot in the tube stations.
+          <div class="embed">
+            <iframe src="https://www.youtube.com/embed/s_i59j74g3s?si=jPzjPfl_-lwdbO1m" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </li>
+
+        <li>Do you know why you'll see these on some cross-walks?
+          <img src="look_right.png" class="img-fluid" alt="London look-right cross walk">
+        </li>
+
+        <li>Silly stuff
+          <ul>
+            <li>Be ready to buy a towel when you get there (not supplied by your housing). Kind of large to pack. Many places to get one near your flat. Can be your first errand!</li>
+            <li>Also (if needed) it's easier to buy a 220V hair dryer over there too, instead of lugging a 110V-to-220V transformer and your home hair dryer.</li>
+            <li>Your phone/laptop chargers all work directly on 220V in the UK. But the wall-plug is different. <a href="https://www.amazon.com/Adapter-TESSAN-Converter-Outlets-Scotland/dp/B0BPTGCNFK/" target="_blank" rel="noopener">These</a> and <a href="https://www.amazon.com/Adapter-OFOAEEA-Essentials-Scotland-British/dp/B0BPMG9BRM/" target="_blank" rel="noopener">these</a> can be helpful.</li>
+            <li>Packing: 1) Pack what you "need." 2) Get rid of 50% of it. 3) Go!</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+
+    <article class="post">
+      <h3 class="post-date">22-Jan-2026</h3>
+      <p>Happy new year everyone. Hope you're all still thinking about going to London this summer. Here's a few updates on the program:</p>
+
+      <h4>Applications are still open and will close around March 1st</h4>
+      <p>I pulled the latest list, and it looks like about 8 of you have completed your applications. Awesome!🎉 I'd love to have many, many more of you complete yours as well! You have a little over a month before the applications close.</p>
+
+      <h4>Short video</h4>
+      <p>I made short promotional video about my class (ASTR-324) and being in London. This is supposed to get pushed out to the International Center's Instagram on the 29th. (I hope you like it!)</p>
+
+      <div class="embed">
+        <iframe src="https://www.youtube.com/embed/v86lm_wtYGY?si=rhnvsx27tAMuJsHC" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+
+      <h4>"London-y" Things</h4>
+      <p>Just a few musing about London</p>
+      <ul>
+        <li>If you like the graffiti artist Banksy (no, not me. I'm Bensky), you can go around London finding some of his/her (?) work. There are 4 or 5 "Banksies" in the city. It's kind of fun to go around and find them.</li>
+        <li>Even though they speak English there, there's plenty to learn about their language. Such as:
+          <ul>
+            <li>A "subway" is an under-a-road walkway. It does not refer to the "tube" or "underground" that London's famous transport mode.</li>
+            <li>You'll see a lot of "look left" signs as you cross streets. Do you know why?</li>
+            <li>A "boot" is the trunk of a car, and the "bin" is the trash. Restrooms are "water closets" (WCs), and if you need some medication, go the "chemist" (not pharmacist).</li>
+            <li>Sometimes, you'll be a little intimidated by Londoners' accents, and will have to listen a little closer when communicating. I've had students actually ask me to tell them what someone (with an accent) just said. Hey! It's just English!</li>
+          </ul>
+        </li>
+        <li>Your personal space will shrink quite a bit everywhere you go. Everything is smaller (rooms, gyms, stores, etc.) and there are more people there.</li>
+        <li><a href="https://www.reddit.com/r/explainlikeimfive/comments/1pwgred/eli5_why_did_the_monarchy_of_the_united_kingdom/" target="_blank" rel="noopener">This</a> is an interesting explanation of today's English monarchy.</li>
+      </ul>
+    </article>
+
+    <article class="post">
+      <h3 class="post-date">18-Dec-2025</h3>
+      <p>🎉Hey everyone, good job finishing up fall quarter! Just a quick London update before you all disappear for a well-deserved break.</p>
+
+      <h4>Applications open!</h4>
+      <p>Applications for London/Summer 2026 are being accepted now. <a href="https://abroad.calpoly.edu/index.cfm?FuseAction=Programs.ViewProgramAngular&id=10889" target="_blank" rel="noopener">Click here</a> and find the "Apply Now" button! (Still no rush--the deadline is in March.)</p>
+
+      <h4>The London Tube</h4>
+      <p>In London, the underground "subway" or just "underground" or "the tube" will be a big part of our lives. It's what quickly and efficiently will whisk us all over greater London. You'll get a free pass for Zones 1 and 2 (see the light gray shading on the map).</p>
+      <p>I put a full map of it here.</p>
+      <img src="tube_full.png" class="img-fluid" alt="tube map">
+
+      <p>I quite enjoy getting used to the tube and trying to find my way without using the map at all (it'll take you a couple of weeks). It definitely provides a welcome break out of the California "drive everywhere" culture for 6 weeks. Here's some stops that will be key for us:</p>
+      <img src="tubemap/tubemap.001.png" class="img-fluid" alt="tube map">
+
+      <ol>
+        <li>The blue Piccadilly line serves Heathrow Airport, where we'll all likely land. (It's a very old and deep (literally) line; citizens hid down there during the WWII bombings of the city). If you can, follow it eastward to Gloucester Rd (NOT pronounced "Gl-ow-ses-ter") which you can get off at and walk (20 min or so), to your flat. Don't worry about having your suitcase and all. Tons of people will be doing the same thing.</li>
+        <li>High Street Kensington is a good stop for your flat too, but you'll have to figure out how to be sure you get on the Circle or District lines (yellow and green) to get there. You can transfer at Gloucester but be sure get on the "Edgeware Rd" line. The lead car on a tube, or the platform you stand on to wait for the tube, is always marked by the end of the line it is travelling to.</li>
+        <li>Yes, "Wimbledon" on the green line is <em>that</em> Wimbledon. Yes, the tournament is on when we get there, and yes you can go. (Actually, if you want to go, you might look into getting tickets <strong>now</strong>.)</li>
+        <li>Earl's Court: that's my stop, which is near the faculty housing.</li>
+        <li>Go to Piccadilly Circus for theaters, shows, food, and tons of action. (Nearby Holborn is a good stop for the British Museum.)</li>
+        <li>Westminster if you want to go see this view (Westminster Abbey, Bensky's favorite place, kinda in the whole world is there too--red arrow):
+          <img src="west.jpg" class="img-fluid" alt="Westminster view">
+        </li>
+      </ol>
+
+      <h4>The map vs reality</h4>
+      <p>The tube is also fun because it doesn't physically exist like the map. All the map tells you is that say Sloane Square is right after South Kensington if you're on the green line (District line) to Upminster.</p>
+      <img src="tube_3.png" class="img-fluid" alt="tube map">
+      <p>Geographically, it actually exists like this:</p>
+      <img src="https://preview.redd.it/l15eaf35fup21.gif?width=1198&format=mp4&s=9be8277039f947ac12f0249344a83948e61b0be2" class="img-fluid" alt="tube map animation">
+
+      <h4>There's always that person...</h4>
+      <p>Then there's this, WHICH YOU'RE NOT GOING TO DO!!!</p>
+      <div class="embed">
+        <iframe src="https://www.youtube.com/embed/TaMiV3Wus9c?si=_FvXr3PczYY380_9&amp;start=132" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+
+      <p>Have a nice holiday everyone!</p>
+    </article>
+
+    <article class="post">
+      <h3 class="post-date">19-Nov-2025</h3>
+
+      <h4>Applications for London/Summer 2026 are now open!</h4>
+      <p><strong>There's nothing you need to do right now, but</strong>:</p>
+
+      <div class="callout text-center">
+        <strong>🎉You can apply for London/Summer 2026 <a href="https://abroad.calpoly.edu/index.cfm?FuseAction=Programs.ViewProgramAngular&id=10889" target="_blank" rel="noopener">here</a>, by clicking the "Apply Now" button! 🎉</strong>
+      </div>
+
+      <p>But again, you don't have to apply right now. This program is NOT first-come, first served and spaces are not be "used up" by early applicants. This is <strong>not</strong> a competitive program, so focus on finishing up this busy quarter and going home for the holidays!</p>
+
+      <p>Admissions to the program will not happen until applications close in March. <strong>If you apply at any time between now and March, and meet the minimum requirements (2.4 GPA, no academic probation, good standing with the university), you'll be admitted.</strong></p>
+
+      <p>ALSO: On Friday (Nov 21), there's a virtual Study Abroad Workshop you can sign up for <a href="https://calendly.com/cpabroad/study-abroad-101-workshop-virtual?month=2025-11" target="_blank" rel="noopener">here</a>.</p>
+
+      <h4>Ok, back to being in London 🇬🇧</h4>
+      <p>One thing I love about the lifestyle in London is all of the walking we all end up doing. (So bring some good walking shoes.) Sure there's the tube and the buses to get around the city, but all of the in-betweens are covered by walking. It is very different from the California "drive everywhere, parking lots, etc." culture.</p>
+
+      <p>One of my favorite things to do in London is to go out and walk in any direction, to investigate the city. When ready to go home, I just find a tube station and let "the underground" whisk me home. So, these walking trips only need to be "one way" (of walking).</p>
+
+      <p>In your case (living at <a href="https://maps.app.goo.gl/uWbwWrqgeP2rcTtp9" target="_blank" rel="noopener">Hyde Park Gate</a>), you can start investigating by just heading across the street into Kensington Gardens and Hyde Park.</p>
+
+      <p>You can also turn due left out of your flat and head to "High Street Kensington" for the Whole Foods, shopping, and just a ton of activity. The Design Museum is around there too. Walking toward our classroom building and Cromwell Road (opposite direction of Kensington Gardens), you can enjoy all of the eateries in South Kensington and of course you must check out Harrods.</p>
+
+      <p>On Friday nights, the museums (that all have free admission) are open until 9pm, so if you want some alone time with your favorite exhibit, painting, whatever, Friday nights are a great time to go, since all of the "tourists" have gone home.</p>
+
+      <p>It's too far for a walk, but taking the tube to Trafalgar Square, Bensky loves to roam around the National Gallery on Friday nights, and in particular, just go stare at George Stubbs's 10 foot painting of a racehorse for a while. (p.s. I'm not artistic at all, but what can I say; London just changes you.)</p>
+
+      <img src="whistlejacket.jpg" class="img-fluid" alt="Whistlejacket in the National Gallery">
+
+      <p>For you, getting back to your flat is best done by taking the tube to the High Street Kensington Station.</p>
+      <img src="highstreettube.jpg" class="img-fluid" alt="High Street Tube Stop">
+    </article>
+
+    <article class="post">
+      <h3 class="post-date">24-Oct-2025</h3>
+      <p>One of the (small) things I love about this trip is right when we arrive. You'll all likely land at Heathrow airport, and your first challenge abroad is getting to your flat. You can take an Uber OR the blue Piccadilly tube line to the Gloucester stop. Taking the tube all on your own--tired from your flight, and with your luggage--can be one of your first independent/abroad challenges for yourself! One way or another, they'll be ready for your arrival at your flat (keys, room assignments, etc.)</p>
+
+      <p>The company that hosts us (FIE--the Foundation for International Education--<a href="https://maps.app.goo.gl/s6Vv5ZiHjsfq2SCs9" target="_blank" rel="noopener">FIE building (114 Cromwell Rd)</a>, wants us there on Thursday June 18, even though classes don't start until the following Monday. So...we all have about 4 days to acclimate ourselves to London, our new home! I love this time so much, because it feels like a bit of an extension to the program.</p>
+
+      <p>During these initial 4 days, FIE usually has a couple of short tours planned around your new neighborhood (the area around your flat) at <a href="https://maps.app.goo.gl/uWbwWrqgeP2rcTtp9" target="_blank" rel="noopener">Hyde Park Gate</a>, showing you good places to get groceries, coffee, and all. One of the tour stops is Kensington Palace, where Kate and William live. It's sooo cooool walking to the palace, through those black wrought iron gates with gold highlights that lead into the palace.</p>
+
+      <p>And by the way--it's fun to jump on a double-decker bus and if you can, get the front seat on the top right in front of the big window. You'll feel like you're on top of the world!! And yes, the 211 bus is actually the one that goes through Westminster.</p>
+      <img src="bus.png" class="img-fluid" alt="london bus 211 in front of the great clock at Westminster">
+    </article>
+  </main>
+
+  <footer>
+    Dr. Bensky's London/Summer 2026 Blog
+  </footer>
 </body>
 </html>
